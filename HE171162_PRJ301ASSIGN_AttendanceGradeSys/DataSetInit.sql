@@ -1,0 +1,3 @@
+CREATE DATABASE HE171162_University;
+GO
+USE HE171162_University;
