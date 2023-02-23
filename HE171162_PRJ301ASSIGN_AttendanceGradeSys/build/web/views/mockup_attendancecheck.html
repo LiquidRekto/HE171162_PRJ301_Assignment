@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JSP Page</title>
+    <link rel="stylesheet" href="../css/dist/index.css" />
+  </head>
+  <body class="text-center">
+    <div class="fixed z-50 w-full bg-orange-400 p-4 text-left">
+      <p class="text-xl font-bold text-white">FPT Academic Portal</p>
+    </div>
+
+    <div class="py-10"></div>
+    <h1 class="my-10 text-center text-3xl font-bold">
+      Attendance Check for: <br />
+      Slot1 - SE1723 - PRJ301 at BE-303
+    </h1>
+    <div class="w-full py-10 text-center">
+      <div class="inline-block px-2">
+        <label> Taker: <b class="text-xl"> sonnt </b> </label>
+      </div>
+    </div>
+    <div class="relative my-0 mx-auto mb-12 w-5/6 overflow-x-auto text-center shadow-md sm:rounded-xl">
+      <table class="w-full">
+        <thead class="bg-blue-600 text-xs uppercase text-white">
+          <tr>
+            <th class="px-6 py-3" scope="col">No.</th>
+            <th class="px-6 py-6" scope="col">Roll Number</th>
+            <th class="px-6 py-6" scope="col">Last Name</th>
+            <th class="px-6 py-6" scope="col">Middle Name</th>
+            <th class="px-6 py-6" scope="col">First Name</th>
+            <th class="px-6 py-6" scope="col">Image</th>
+            <th class="px-6 py-6" scope="col">Status</th>
+            <th class="px-6 py-6" scope="col">Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="px-6 py-3 text-base">1</td>
+            <td class="px-6 py-3 text-base">HE171162</td>
+            <td class="px-6 py-3 text-base">Bùi</td>
+            <td class="px-6 py-3 text-base">Tiến</td>
+            <td class="px-6 py-3 text-base">Dũng</td>
+            <td class="px-4 py-3 text-base object-cover text-center">
+                <img width="192" class="rounded-xl inline-block" src="../images/he171162.png" />
+            </td>
+            <td class="px-6 py-3 text-base">
+                <div class="flex items-center mb-4">
+    <input name="he171162" checked id="absent" type="radio" value="" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+    <label for="absent" class="peer-checked/absent:text-red-500 text-gray-400 ml-2 text-sm font-medium">Absent</label>
+</div>
+<div class="flex items-center">
+    <input name="he171162" id="attended" type="radio" value="" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+    <label for="attended" class="peer-checked/attended:text-green-500 text-gray-400 ml-2 text-sm font-medium">Attended</label>
+</div>
+            </td>
+            <td class="px-4 py-2 text-base">
+              <textarea rows="6" placeholder="Write your comment here..." class="h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left"></textarea>
+            </td>
+            
+          </tr>
+          <tr>
+            <td class="px-6 py-3 text-base">2</td>
+            <td class="px-6 py-3 text-base">HE170245</td>
+            <td class="px-6 py-3 text-base">Bùi</td>
+            <td class="px-6 py-3 text-base">Hoàng</td>
+            <td class="px-6 py-3 text-base">Long</td>
+            <td class="px-4 py-3 text-base object-cover text-center">
+                <img width="192" class="rounded-xl inline-block" src="../images/he170245.png" />
+            </td>
+            <td class="px-6 py-3 text-base">
+                <div class="flex items-center mb-4">
+    <input name="he170245" checked id="absent" type="radio" value="" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+    <label for="absent" class="peer-checked/absent:text-red-500 text-gray-400 ml-2 text-sm font-medium">Absent</label>
+</div>
+<div class="flex items-center">
+    <input name="he170245" id="attended" type="radio" value="" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+    <label for="attended" class="peer-checked/attended:text-green-500 text-gray-400 ml-2 text-sm font-medium">Attended</label>
+</div>
+            </td>
+            <td class="px-4 py-2 text-base">
+              <textarea rows="6" placeholder="Write your comment here..." class="h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left"></textarea>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="mb-12 text-center border-box rounded-lg bg-green-500 px-6 py-3 font-bold text-white hover:bg-green-600">Submit attendance</button>
+  </body>
+</html>
