@@ -67,6 +67,7 @@ CREATE TABLE [Sessions] (
 	[Group] INT,
 	TimeSlot VARCHAR(2),
 	Room VARCHAR(8),
+	InstructorStatus INT,
 	ConductDate DATE,
 	FOREIGN KEY (Instructor) REFERENCES Instructors(InstructorID),
 	FOREIGN KEY ([Group]) REFERENCES Groups(GroupID),
@@ -76,15 +77,6 @@ CREATE TABLE [Sessions] (
 	CONSTRAINT uk_SessionEntity UNIQUE (Course, [Group], TimeSlot, ConductDate)
 );
 
-CREATE TABLE Teach (
-	Instructor VARCHAR(8),
-	[Session] INT NOT NULL UNIQUE,
-	[Status] INT,
-	RecordDate DATETIME,
-	FOREIGN KEY (Instructor) REFERENCES Instructors(InstructorID),
-	FOREIGN KEY ([Session]) REFERENCES [Sessions](SessionID),
-	CONSTRAINT uk_Instructor_Session UNIQUE (Instructor, [Session])
-);
 
 /* N - N TABLES */
 CREATE TABLE Attend (
@@ -185,29 +177,15 @@ INSERT INTO Groups (GroupName, [CourseID]) VALUES
 ('ISE_1723','PRJ301'),
 ('SE1723','IOT102'),
 ('SE1726','DBI202');
-/*
-SessionID INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
-	SessionName TEXT,
-	/*Course VARCHAR(6),*/
-	Instructor VARCHAR(8),
-	[Group] INT,
-	TimeSlot VARCHAR(2),
-	Room VARCHAR(8),
-*/
-INSERT INTO [Sessions] (SessionName, Course, Instructor, [Group], TimeSlot, Room, ConductDate) VALUES
-('Sessions and Cookies', 'PRJ301', 'sonnt5',1,'3P','BE-305','2023-02-24'),
-('Introduction to Databases', 'DBI202', 'bantq',4,'2P','DE-307','2023-02-25');
+
+INSERT INTO [Sessions] (SessionName, Course, Instructor, [Group], TimeSlot, Room, InstructorStatus, ConductDate) VALUES
+('Sessions and Cookies', 'PRJ301', 'sonnt5',1,'3P','BE-305',1,'2023-02-24'),
+('Introduction to Databases', 'DBI202', 'bantq',4,'2P','DE-307',1,'2023-02-25');
 
 
 INSERT INTO [Attend] VALUES
 ('HE171162',1,1,'2023-02-24 13:00:25'),
 ('HE176182',1,1,'2023-02-24 13:00:25')
-
-
-INSERT INTO [Teach] VALUES
-('sonnt5',1,1,'2023-02-24 13:00:25')
-
-
 
 
 

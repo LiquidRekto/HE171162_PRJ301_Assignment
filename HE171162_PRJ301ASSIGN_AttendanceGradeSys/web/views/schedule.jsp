@@ -1,10 +1,3 @@
-<%-- 
-    Document   : schedule.jsp
-    Created on : Feb 19, 2023, 6:34:06 PM
-    Author     : Admin
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,11 +21,11 @@
         <button class="border-box rounded-lg bg-blue-700 px-6 py-3 font-bold text-white hover:bg-blue-600">View</button>
       </div>
     </div>
-    <div class="relative my-0 mx-auto w-5/6 mb-12 overflow-x-auto text-center shadow-md sm:rounded-xl">
+    <div class="relative my-0 mx-auto mb-12 w-5/6 overflow-x-auto text-center shadow-md sm:rounded-xl">
       <table class="w-full">
         <thead class="bg-blue-600 text-xs uppercase text-white">
           <tr>
-            <th class="px-6 py-2" rowspan="2">Hello</th>
+            <th class="px-6 py-2" rowspan="2"></th>
             <th class="px-6 pt-4" scope="col">Mon</th>
             <th class="px-6 pt-4" scope="col">Tue</th>
             <th class="px-6 pt-4" scope="col">Wed</th>
@@ -52,13 +45,17 @@
           </tr>
         </thead>
         <tbody>
+            
           <tr>
             <td class="px-6 py-3 text-base" scope="row">Slot 1</td>
             <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-green-500 px-6 py-3">
+              <div class="h-full w-full bg-green-500 px-2 py-3 hover:cursor-pointer hover:bg-green-600">
                 <label class="text-sm font-bold text-gray-300">IOT1702</label>
-                <label class="text-base font-bold text-white">PRJ301</label>
+                <label class="text-base font-bold text-white">PRJ301</label> <br/>
                 <label class="text-xs italic text-white">at BE-301</label>
+                <div class="bg-orange-400 px-2 rounded-lg">
+                  <label class="text-xs font-bold text-white">9:10-10:40</label>
+                </div>
               </div>
             </td>
             <td class="px-6 py-3 text-base">-</td>
@@ -75,6 +72,9 @@
                 <label class="text-sm font-bold text-gray-300">IOT1702</label>
                 <label class="text-base font-bold text-white">PRJ301</label>
                 <label class="text-xs italic text-white">at BE-301</label>
+                <div class="bg-orange-400 px-2 rounded-lg">
+                  <label class="text-xs font-bold text-white">9:10-10:40</label>
+                </div>
               </div>
             </td>
             <td class="px-6 py-3 text-base">-</td>
@@ -219,4 +219,3 @@
     </div>
   </body>
 </html>
-
