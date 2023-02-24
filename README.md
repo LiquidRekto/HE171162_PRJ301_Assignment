@@ -8,5 +8,5 @@ For this assignment, I will recreate the FPT Attendance System (in my own style)
 #Database Overview
 
 Diagram (SSMS):
-![image](https://user-images.githubusercontent.com/46742676/221001738-68dc35c6-94c6-4e24-bcf9-baa2eccaf57f.png)
+![image](https://user-images.githubusercontent.com/46742676/221097627-b8eb18c3-a675-40c7-bc63-1ed1fff606e5.png)
 
