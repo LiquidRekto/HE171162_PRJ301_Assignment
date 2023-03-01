@@ -37,6 +37,7 @@
         
         <div class="p-6 bg-slate-200 my-0 mx-auto w-1/4 rounded-2xl">
             <form method="post" action="login" class="my-0 mx-auto w-5/6">
+                <input type="hidden" name="targetUrl" value="${requestScope.targetUrl}">
                 <label class="text-xl font-bold my-2"> Email </label> <br/>
                 <input name="email" class="my-2 w-full border-box rounded-lg border border-gray-500 bg-gray-200 p-2" type="text" placeholder="abcxyz@example.com" /> <br/>
                 <label class="text-xl font-bold my-2"> Password </label> <br/>
