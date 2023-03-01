@@ -17,7 +17,7 @@ import controllers.authentication.BaseRequiredAuthenticatedController;
  *
  * @author Admin
  */
-public class MainController extends BaseRequiredAuthenticatedController {
+public class TestController extends BaseRequiredAuthenticatedController {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp, User user) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class MainController extends BaseRequiredAuthenticatedController {
             DBContext<TestMd> ctx = new TestDBContext(MyDBConfig.getConfig());
             String fullURL = req.getRequestURL().toString();
             String ctxy = req.getContextPath();
-            resp.getWriter().print("DB Connected successfully! at " + fullURL.substring(fullURL.lastIndexOf(ctxy)+ctxy.length()+1));
+            resp.getWriter().print("Hello World!");
         }
         catch (Exception e) {
             resp.getWriter().print(e);

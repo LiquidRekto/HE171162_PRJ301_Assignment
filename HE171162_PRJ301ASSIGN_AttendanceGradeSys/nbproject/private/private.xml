@@ -5,10 +5,16 @@
         <group>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/cfg/MyDBConfig.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/DBConfig.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/authentication/InstructorAuthentication.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/TestDBContext.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/authentication/LoginController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/authentication/LogoutController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/authentication/BaseRequiredAuthenticatedController.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/DBContext.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/MainController.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/TestMd.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/User.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/UserDBContext.java</file>
         </group>
     </open-files>
 </project-private>

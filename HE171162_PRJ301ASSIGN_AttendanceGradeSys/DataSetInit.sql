@@ -10,22 +10,15 @@ go
 /* 
 	Create database
 */
-
-CREATE DATABASE HE171162_University;
+CREATE DATABASE [HE171162_University];
 go
-USE HE171162_University;
+use [HE171162_University];
 
 /* 
 	Create tables
 */
 
-CREATE TABLE Groups(
-	GroupID INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
-	GroupName VARCHAR(16),
-	CourseID VARCHAR(16),
-	CONSTRAINT uk_Group_Course UNIQUE (GroupName, [CourseID])
 
-);
 CREATE TABLE Rooms(
 	RoomID VARCHAR(8) PRIMARY KEY,
 	Building VARCHAR(64)
@@ -40,7 +33,23 @@ CREATE TABLE Instructors(
 	InstructorID VARCHAR(8) PRIMARY KEY,
 	FirstName NVARCHAR(256),
 	MiddleName NVARCHAR(256),
-	LastName NVARCHAR(256)
+	LastName NVARCHAR(256),
+);
+
+CREATE TABLE [Users] (
+	UserEmail VARCHAR(256) PRIMARY KEY,
+	[Password] VARCHAR(256),
+	DisplayName VARCHAR(256),
+	CONSTRAINT ck_UserEmail CHECK (UserEmail LIKE '%_@__%.__%')
+);
+
+CREATE TABLE Groups(
+	GroupID INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
+	GroupName VARCHAR(16),
+	CourseID VARCHAR(16),
+	FOREIGN KEY (CourseID) REFERENCES Courses(CourseID),
+	CONSTRAINT uk_Group_Course UNIQUE (GroupName, [CourseID])
+
 );
 
 CREATE TABLE TimeSlots (
@@ -62,7 +71,6 @@ CREATE TABLE Students(
 CREATE TABLE [Sessions] (
 	SessionID INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
 	SessionName TEXT,
-	Course VARCHAR(16),
 	Instructor VARCHAR(8),
 	[Group] INT,
 	TimeSlot VARCHAR(2),
@@ -73,8 +81,21 @@ CREATE TABLE [Sessions] (
 	FOREIGN KEY ([Group]) REFERENCES Groups(GroupID),
 	FOREIGN KEY (TimeSlot) REFERENCES TimeSlots(SlotID),
 	FOREIGN KEY (Room) REFERENCES Rooms(RoomID),
-	FOREIGN KEY (Course) REFERENCES Courses(CourseID),
-	CONSTRAINT uk_SessionEntity UNIQUE (Course, [Group], TimeSlot, ConductDate)
+	CONSTRAINT uk_SessionEntity UNIQUE ([Group], TimeSlot, ConductDate)
+);
+
+CREATE TABLE [Join](
+	StudentID VARCHAR(8),
+	GroupID INT,
+	FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+	FOREIGN KEY (GroupID) REFERENCES Groups(GroupID)
+);
+
+CREATE TABLE AssignTo(
+	InstructorID VARCHAR(8),
+	GroupID INT,
+	FOREIGN KEY (InstructorID) REFERENCES Instructors(InstructorID),
+	FOREIGN KEY (GroupID) REFERENCES Groups(GroupID)
 );
 
 
@@ -84,7 +105,7 @@ CREATE TABLE Attend (
 	[Session] INT NOT NULL,
 	[Status] INT,
 	RecordDate DATETIME,
-	FOREIGN KEY (Student) REFERENCES Students(StudentID),
+	CONSTRAINT fk_StudentAttend FOREIGN KEY (Student) REFERENCES Students(StudentID),
 	FOREIGN KEY ([Session]) REFERENCES [Sessions](SessionID),
 	CONSTRAINT uk_Student_Session UNIQUE (Student, [Session])
 );
@@ -92,6 +113,9 @@ CREATE TABLE Attend (
 /* 
 	Inserting data
 */
+
+INSERT INTO Users VALUES
+('sa@mail.com','12345','admin');
 
 INSERT INTO Instructors VALUES
 ('sonnt5','Son','Tung','Ngo'),
@@ -159,6 +183,7 @@ INSERT INTO TimeSlots VALUES
 ('6','16:10:00','17:40:00');
 
 INSERT INTO Rooms VALUES
+('BE-301','Beta'),
 ('BE-305','Beta'),
 ('BE-306','Beta'),
 ('BE-307','Beta'),
@@ -173,19 +198,22 @@ INSERT INTO Rooms VALUES
 ('AL-204L','Alpha');
 
 INSERT INTO Groups (GroupName, [CourseID]) VALUES 
+('IOT1702','PRJ301'),
 ('SE1723','PRO192'),
 ('ISE_1723','PRJ301'),
 ('SE1723','IOT102'),
 ('SE1726','DBI202');
 
-INSERT INTO [Sessions] (SessionName, Course, Instructor, [Group], TimeSlot, Room, InstructorStatus, ConductDate) VALUES
-('Sessions and Cookies', 'PRJ301', 'sonnt5',1,'3P','BE-305',1,'2023-02-24'),
-('Introduction to Databases', 'DBI202', 'bantq',4,'2P','DE-307',1,'2023-02-25');
+INSERT INTO [Sessions] (SessionName, Instructor, [Group], TimeSlot, Room, InstructorStatus, ConductDate) VALUES
+('Create a Servlet', 'sonnt5',1,'1P','BE-301',1,'2023-02-06'),
+('Sessions and Cookies',  'sonnt5',1,'1P','BE-301',1,'2023-02-10'),
+('Introduction to Databases', 'bantq',4,'2P','DE-307',1,'2023-02-25');
 
 
 INSERT INTO [Attend] VALUES
-('HE171162',1,1,'2023-02-24 13:00:25'),
-('HE176182',1,1,'2023-02-24 13:00:25')
+('HE150057',1,1,'2023-02-24 13:00:25'),
+('HE151095',1,1,'2023-02-24 13:00:25')
+
 
 
 
