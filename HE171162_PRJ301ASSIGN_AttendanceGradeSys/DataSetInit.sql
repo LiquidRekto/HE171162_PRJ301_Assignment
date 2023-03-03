@@ -88,14 +88,16 @@ CREATE TABLE [Join](
 	StudentID VARCHAR(8),
 	GroupID INT,
 	FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
-	FOREIGN KEY (GroupID) REFERENCES Groups(GroupID)
+	FOREIGN KEY (GroupID) REFERENCES Groups(GroupID),
+	CONSTRAINT uk_StudentGroupPair UNIQUE (StudentID, GroupID)
 );
 
 CREATE TABLE AssignTo(
 	InstructorID VARCHAR(8),
 	GroupID INT,
 	FOREIGN KEY (InstructorID) REFERENCES Instructors(InstructorID),
-	FOREIGN KEY (GroupID) REFERENCES Groups(GroupID)
+	FOREIGN KEY (GroupID) REFERENCES Groups(GroupID),
+	CONSTRAINT uk_InstructorGroupPair UNIQUE (InstructorID, GroupID)
 );
 
 
@@ -105,6 +107,7 @@ CREATE TABLE Attend (
 	[Session] INT NOT NULL,
 	[Status] INT,
 	RecordDate DATETIME,
+	InstructorComment TEXT,
 	CONSTRAINT fk_StudentAttend FOREIGN KEY (Student) REFERENCES Students(StudentID),
 	FOREIGN KEY ([Session]) REFERENCES [Sessions](SessionID),
 	CONSTRAINT uk_Student_Session UNIQUE (Student, [Session])
@@ -204,15 +207,39 @@ INSERT INTO Groups (GroupName, [CourseID]) VALUES
 ('SE1723','IOT102'),
 ('SE1726','DBI202');
 
+INSERT INTO [Join] (StudentID, GroupID) VALUES
+('HE171073',3),
+('HE171162',3),
+('HE171442',3),
+('HE171482',3),
+('HE171578',3),
+('HE171687',3),
+('HE171851',3),
+('HE150057',3),
+('HE151095',3),
+('HE153206',3),
+('HE160694',3),
+('HE161357',3),
+('HE161795',3),
+('HE163146',3);
+
 INSERT INTO [Sessions] (SessionName, Instructor, [Group], TimeSlot, Room, InstructorStatus, ConductDate) VALUES
 ('Create a Servlet', 'sonnt5',1,'1P','BE-301',1,'2023-02-06'),
-('Sessions and Cookies',  'sonnt5',1,'1P','BE-301',1,'2023-02-10'),
-('Introduction to Databases', 'bantq',4,'2P','DE-307',1,'2023-02-25');
+('Sessions and Cookies',  'sonnt5',1,'2P','BE-301',1,'2023-02-10'),
+('Introduction to Databases', 'bantq',4,'2P','DE-307',1,'2023-02-12'),
+('Workshop 1', 'sonnt5',1,'1P','BE-301',1,'2023-02-14'),
+('JSP Authentication',  'sonnt5',1,'2P','BE-301',1,'2023-02-16')
 
 
 INSERT INTO [Attend] VALUES
-('HE150057',1,1,'2023-02-24 13:00:25'),
-('HE151095',1,1,'2023-02-24 13:00:25')
+('HE150057',1,1,'2023-02-24 13:00:25',''),
+('HE151095',1,1,'2023-02-24 13:00:25',''),
+('HE171162',3,1,'2023-02-24 13:00:25',''),
+('HE171442',3,1,'2023-02-24 13:00:25',''),
+('HE171482',3,1,'2023-02-24 13:00:25',''),
+('HE171578',3,1,'2023-02-24 13:00:25',''),
+('HE171687',3,1,'2023-02-24 13:00:25',''),
+('HE171851',3,1,'2023-02-24 13:00:25','');
 
 
 

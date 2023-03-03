@@ -34,10 +34,14 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") != null) {
+            response.sendRedirect("home");
+            return;
+        }
         if (request.getAttribute("targetUrl") != null) {
             request.setAttribute("targetUrl",request.getAttribute("targetUrl"));
         } else {
-            request.setAttribute("targetUrl","main");
+            request.setAttribute("targetUrl","home");
         }
         request.setAttribute("state","normal");
         request.getRequestDispatcher("/views/login.jsp").forward(request, response);
@@ -61,20 +65,20 @@ public class LoginController extends HttpServlet {
         {
             request.getSession().setAttribute("user", user);
             String redir = "";
-            if (request.getAttribute("targetUrl") == null) {
+            if (request.getParameter("targetUrl") == null) {
                 redir = "main";
             } else {
-                redir = request.getAttribute("targetUrl").toString();
+                redir = request.getParameter("targetUrl");
             }
             response.sendRedirect(redir);
             //request.getRequestDispatcher(request.getAttribute("targetUrl").toString()).forward(request, response);
         }
         else
         {
-            if (request.getAttribute("targetUrl") != null) {
-                request.setAttribute("targetUrl",request.getAttribute("targetUrl"));
+            if (request.getParameter("targetUrl") == null) {
+                request.setAttribute("targetUrl","home");
             } else {
-                 request.setAttribute("targetUrl","main");
+                request.setAttribute("targetUrl",request.getParameter("targetUrl"));
             }
             request.setAttribute("state","failed");
             request.getRequestDispatcher("views/login.jsp").forward(request, response);

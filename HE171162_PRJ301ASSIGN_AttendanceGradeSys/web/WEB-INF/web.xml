@@ -16,6 +16,26 @@
         <servlet-name>testing</servlet-name>
         <servlet-class>controllers.TestController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>wkschedule</servlet-name>
+        <servlet-class>controllers.WeeklyScheduleController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>attendcheck</servlet-name>
+        <servlet-class>controllers.AttendanceCheckController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>groupattendview</servlet-name>
+        <servlet-class>controllers.GroupAttendanceViewerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>homescr</servlet-name>
+        <servlet-class>controllers.HomeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>testdb</servlet-name>
+        <servlet-class>controllers.testing.TestDBController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -31,6 +51,26 @@
     <servlet-mapping>
         <servlet-name>testing</servlet-name>
         <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>wkschedule</servlet-name>
+        <url-pattern>/schedule</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>attendcheck</servlet-name>
+        <url-pattern>/attendancecheck</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>groupattendview</servlet-name>
+        <url-pattern>/groupview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>homescr</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>testdb</servlet-name>
+        <url-pattern>/testdb</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

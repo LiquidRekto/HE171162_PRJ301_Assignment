@@ -16,10 +16,6 @@
         <link rel="stylesheet" href="css/dist/index.css" />
     </head>
     <body class="">
-        <c:if test="${requestScope.targetUrl != null}">
-            <p>${requestScope.targetUrl}</p>
-        </c:if>
-            <p>${requestScope.targetUrl}</p>
         <h1 class="text-center text-3xl font-bold my-12">FAP Attendance System</h1>
         <c:choose>
             <c:when test="${requestScope.state.equals('failed')}">

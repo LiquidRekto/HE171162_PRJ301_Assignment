@@ -1,9 +1,11 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>JSP Page</title>
-    <link rel="stylesheet" href="../css/dist/index.css" />
+    <title>Schedule - FAP Attendace System</title>
+    <link rel="stylesheet" href="css/dist/index.css" />
   </head>
   <body>
     <div class="fixed z-50 w-full bg-orange-400 p-4 text-left">
