@@ -171,3 +171,5 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/java,node
 /PRJ_Workshop2/nbproject/private/
 /PRJ_Workshop2/build/
+/Exercise3_PRJ301/nbproject/private/
+/Exercise3_PRJ301/build/

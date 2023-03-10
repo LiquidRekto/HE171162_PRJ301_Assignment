@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </div>
 
         <div class="py-10"></div>
-        <h1 class="my-10 text-center text-3xl font-bold">Attendance Overview of Group: </h1>
+        <h1 class="my-10 text-center text-3xl font-bold">Attendance Overview of Group: ISE_SE1723 - PRJ301</h1>
         
         <div class="relative my-0 mx-auto mb-12 w-5/6 overflow-x-auto text-center shadow-md sm:rounded-xl">
       <table class="w-full">
@@ -27,60 +27,53 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <th class="px-6 py-6" scope="col">Last Name</th>
             <th class="px-6 py-6" scope="col">Middle Name</th>
             <th class="px-6 py-6" scope="col">First Name</th>
-            <th class="px-6 py-6" scope="col">Image</th>
-            <th class="px-6 py-6" scope="col">Status</th>
-            <th class="px-6 py-6" scope="col">Comment</th>
+            <th class="px-6 py-6 w-1/3" scope="col">Absent Penalty</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="px-6 py-3 text-base">1</td>
-            <td class="px-6 py-3 text-base">HE171162</td>
-            <td class="px-6 py-3 text-base">Bùi</td>
-            <td class="px-6 py-3 text-base">Tiến</td>
-            <td class="px-6 py-3 text-base">Dũng</td>
-            <td class="px-4 py-3 text-base object-cover text-center">
-                <img width="192" class="rounded-xl inline-block" src="../images/he171162.png" />
+            <tr>
+            <td class="px-6 py-3" scope="col">1</td>
+            <td class="px-6 py-6" scope="col">HE171162</td>
+            <td class="px-6 py-6" scope="col">Bùi</td>
+            <td class="px-6 py-6" scope="col">Tiến</td>
+            <td class="px-6 py-6" scope="col">Dũng</td>
+            <td class="px-6 py-6" scope="col">
+                <div class="relative pt-1 mx-5">
+                    <div class="overflow-hidden h-2 text-xs flex rounded-xl bg-emerald-400">
+                         <div style="width: 0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
+                    </div>
+                </div>
             </td>
-            <td class="px-6 py-3 text-base">
-                <div class="flex items-center mb-4">
-    <input name="he171162" checked id="absent" type="radio" value="" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
-    <label for="absent" class="peer-checked/absent:text-red-500 text-gray-400 ml-2 text-sm font-medium">Absent</label>
-</div>
-<div class="flex items-center">
-    <input name="he171162" id="attended" type="radio" value="" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
-    <label for="attended" class="peer-checked/attended:text-green-500 text-gray-400 ml-2 text-sm font-medium">Attended</label>
-</div>
-            </td>
-            <td class="px-4 py-2 text-base">
-              <textarea rows="6" placeholder="Write your comment here..." class="rounded-xl resize-none h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left"></textarea>
-            </td>
-            
           </tr>
           <tr>
-            <td class="px-6 py-3 text-base">2</td>
-            <td class="px-6 py-3 text-base">HE170245</td>
-            <td class="px-6 py-3 text-base">Bùi</td>
-            <td class="px-6 py-3 text-base">Hoàng</td>
-            <td class="px-6 py-3 text-base">Long</td>
-            <td class="px-4 py-3 text-base object-cover text-center">
-                <img width="192" class="rounded-xl inline-block" src="../images/he170245.png" />
+            <td class="px-6 py-3" scope="col">3</td>
+            <td class="px-6 py-6" scope="col">HE171071</td>
+            <td class="px-6 py-6" scope="col">Vũ</td>
+            <td class="px-6 py-6" scope="col">Ngọc</td>
+            <td class="px-6 py-6" scope="col">Nhất</td>
+            <td class="px-6 py-6" scope="col">
+                <div class="relative pt-1 mx-5">
+                    <div class="overflow-hidden h-2 text-xs flex rounded-xl bg-emerald-400">
+                         <div style="width: 40%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-600"></div>
+                    </div>
+                </div>
             </td>
-            <td class="px-6 py-3 text-base">
-                <div class="flex items-center mb-4">
-    <input name="he170245" checked id="absent" type="radio" value="" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
-    <label for="absent" class="peer-checked/absent:text-red-500 text-gray-400 ml-2 text-sm font-medium">Absent</label>
-</div>
-<div class="flex items-center">
-    <input name="he170245" id="attended" type="radio" value="" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
-    <label for="attended" class="peer-checked/attended:text-green-500 text-gray-400 ml-2 text-sm font-medium">Attended</label>
-</div>
-            </td>
-            <td class="px-4 py-2 text-base">
-              <textarea rows="6" placeholder="Write your comment here..." class="h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left"></textarea>
-            </td>
-            
           </tr>
+          <tr>
+            <td class="px-6 py-3" scope="col">2</td>
+            <td class="px-6 py-6" scope="col">HE170245</td>
+            <td class="px-6 py-6" scope="col">Bùi</td>
+            <td class="px-6 py-6" scope="col">Hoàng</td>
+            <td class="px-6 py-6" scope="col">Long</td>
+            <td class="px-6 py-6" scope="col">
+                <div class="relative pt-1 mx-5">
+                    <div class="overflow-hidden h-2 text-xs flex rounded-xl bg-emerald-400">
+                         <div style="width: 20%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-600"></div>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          
         </tbody>
       </table>
     </div>

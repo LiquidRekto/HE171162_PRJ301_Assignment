@@ -32,6 +32,7 @@
             <th class="px-6 py-6" scope="col">Image</th>
             <th class="px-6 py-6" scope="col">Status</th>
             <th class="px-6 py-6" scope="col">Comment</th>
+            <th class="px-6 py-6" scope="col">Recent Record</th>
           </tr>
         </thead>
         <tbody>
@@ -46,17 +47,18 @@
             </td>
             <td class="px-6 py-3 text-base">
                 <div class="flex items-center mb-4">
-    <input name="he171162" checked id="absent" type="radio" value="" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+    <input name="he171162" id="absent" type="radio" value="" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
     <label for="absent" class="peer-checked/absent:text-red-500 text-gray-400 ml-2 text-sm font-medium">Absent</label>
 </div>
 <div class="flex items-center">
-    <input name="he171162" id="attended" type="radio" value="" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+    <input name="he171162" checked id="attended" type="radio" value="" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
     <label for="attended" class="peer-checked/attended:text-green-500 text-gray-400 ml-2 text-sm font-medium">Attended</label>
 </div>
             </td>
             <td class="px-4 py-2 text-base">
               <textarea rows="6" placeholder="Write your comment here..." class="rounded-xl resize-none h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left"></textarea>
             </td>
+            <td class="px-4 py-2 text-base"> 2023-02-06 07:34:05.000 </td>
             
           </tr>
           <tr>
@@ -81,6 +83,7 @@
             <td class="px-4 py-2 text-base">
               <textarea rows="6" placeholder="Write your comment here..." class="h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left"></textarea>
             </td>
+            <td class="px-4 py-2 text-base"> 2023-02-06 07:34:05.000 </td>
             
           </tr>
           <tr>
@@ -94,23 +97,24 @@
             </td>
             <td class="px-6 py-3 text-base">
                 <div class="flex items-center mb-4">
-    <input name="he170245" checked id="absent" type="radio" value="" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+    <input name="he170245" id="absent" type="radio" value="" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
     <label for="absent" class="peer-checked/absent:text-red-500 text-gray-400 ml-2 text-sm font-medium">Absent</label>
 </div>
 <div class="flex items-center">
-    <input name="he170245" id="attended" type="radio" value="" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+    <input name="he170245" checked id="attended" type="radio" value="" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
     <label for="attended" class="peer-checked/attended:text-green-500 text-gray-400 ml-2 text-sm font-medium">Attended</label>
 </div>
             </td>
             <td class="px-4 py-2 text-base">
               <textarea rows="6" placeholder="Write your comment here..." class="h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left"></textarea>
             </td>
+            <td class="px-4 py-2 text-base"> 2023-02-06 07:34:05.000 </td>
             
           </tr>
           
         </tbody>
       </table>
     </div>
-    <button class="mb-12 text-center border-box rounded-lg bg-green-500 px-6 py-3 font-bold text-white hover:bg-green-600">Submit attendance</button>
+    <button class="mb-12 text-center border-box rounded-lg bg-green-500 px-6 py-3 font-bold text-white hover:bg-green-600">Resubmit attendance</button>
   </body>
 </html>

@@ -187,6 +187,7 @@ INSERT INTO TimeSlots VALUES
 
 INSERT INTO Rooms VALUES
 ('BE-301','Beta'),
+('BE-303','Beta'),
 ('BE-305','Beta'),
 ('BE-306','Beta'),
 ('BE-307','Beta'),
@@ -224,22 +225,23 @@ INSERT INTO [Join] (StudentID, GroupID) VALUES
 ('HE163146',3);
 
 INSERT INTO [Sessions] (SessionName, Instructor, [Group], TimeSlot, Room, InstructorStatus, ConductDate) VALUES
-('Create a Servlet', 'sonnt5',1,'1P','BE-301',1,'2023-02-06'),
-('Sessions and Cookies',  'sonnt5',1,'2P','BE-301',1,'2023-02-10'),
+('Create a Servlet', 'sonnt5',3,'1P','BE-303',1,'2023-02-06'),
+('Sessions and Cookies','sonnt5',3,'1P','BE-303',1,'2023-02-10'),
+('Workshop 1', 'sonnt5',3,'1P','BE-303',1,'2023-02-14');
+/*
 ('Introduction to Databases', 'bantq',4,'2P','DE-307',1,'2023-02-12'),
-('Workshop 1', 'sonnt5',1,'1P','BE-301',1,'2023-02-14'),
+
 ('JSP Authentication',  'sonnt5',1,'2P','BE-301',1,'2023-02-16')
+*/
 
 
 INSERT INTO [Attend] VALUES
-('HE150057',1,1,'2023-02-24 13:00:25',''),
-('HE151095',1,1,'2023-02-24 13:00:25',''),
-('HE171162',3,1,'2023-02-24 13:00:25',''),
-('HE171442',3,1,'2023-02-24 13:00:25',''),
-('HE171482',3,1,'2023-02-24 13:00:25',''),
-('HE171578',3,1,'2023-02-24 13:00:25',''),
-('HE171687',3,1,'2023-02-24 13:00:25',''),
-('HE171851',3,1,'2023-02-24 13:00:25','');
+('HE171162',1,1,'2023-02-24 13:00:25',''),
+('HE170245',1,1,'2023-02-24 13:00:25',''),
+('HE171071',1,0,'2023-02-24 13:00:25',''),
+('HE171162',2,1,'2023-02-24 13:00:25',''),
+('HE170245',2,0,'2023-02-24 13:00:25',''),
+('HE171071',2,0,'2023-02-24 13:00:25','');
 
 
 
