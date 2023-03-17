@@ -24,7 +24,14 @@ public class AttendanceCheckController extends BaseRequiredAuthenticatedControll
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
-        request.getRequestDispatcher("views/attendance_check.jsp").forward(request, response);
+        String sessParam = request.getParameter("sesid");
+        if (sessParam == null) {
+            response.getWriter().println("Not available!");
+        } else {
+            int sesId = Integer.parseInt(sessParam);
+            request.getRequestDispatcher("views/attendance_check.jsp").forward(request, response);
+        }
+        
     }
     
 }

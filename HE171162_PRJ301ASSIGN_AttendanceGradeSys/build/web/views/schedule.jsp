@@ -89,7 +89,7 @@
                             <c:forEach items="${requestScope.sessions}" var="ses">
                                 <c:if test="${String.valueOf(ses.timeSlot.slotId.charAt(0)).equals(s.slotId) and ses.conductDate eq d}">
                                     <td class="h-3 w-[11%] text-base">
-                                    <div class="group group-hover:cursor-pointer h-full w-full bg-green-500 px-2 py-3 hover:cursor-pointer hover:bg-green-600">
+                                    <div onclick="openAttendance(${ses.getSessionId()})" class="group group-hover:cursor-pointer h-full w-full bg-green-500 px-2 py-3 hover:cursor-pointer hover:bg-green-600">
                                         <label class="text-sm font-bold text-gray-300">${ses.getGroup().getGroupName()}</label> <br/>
                                         <label class="text-base font-bold text-white">${ses.getGroup().getCourse().getCourseCode()}</label> <br/>
                                         <label class="text-xs italic text-white">at ${ses.getRoom().getRoomName()}</label>
@@ -120,7 +120,7 @@
     </div>
     <script>
         function openAttendance(location) {
-            window.href.location = 'attendancecheck?sesid=' + location;
+            window.location.href = 'attendancecheck?sesid=' + location;
         }
     </script>
   </body>
