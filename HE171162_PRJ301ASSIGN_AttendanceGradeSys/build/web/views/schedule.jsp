@@ -1,4 +1,6 @@
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,17 +19,27 @@
     <div class="w-full py-10 text-center">
       <div class="inline-block px-2">
         <label> Instructor: </label>
-        <input class="border-box rounded-lg border border-gray-500 bg-gray-200 p-2" type="text" placeholder="Type here..." />
+        <input class="border-box rounded-lg border border-gray-500 bg-gray-200 p-2" type="text" value="${sessionScope.user.getInstructor().getInstructorId()}" placeholder="Type here..." />
       </div>
       <div class="inline-block px-2">
         <button class="border-box rounded-lg bg-blue-700 px-6 py-3 font-bold text-white hover:bg-blue-600">View</button>
       </div>
     </div>
-    <div class="relative my-0 mx-auto mb-12 w-5/6 overflow-x-auto text-center shadow-md sm:rounded-xl">
+    <div class="text-center mx-0 my-8">
+        <div class="inline-block pb-6 w-6 h-2 bg-green-500"></div>
+        <label> Attended </label>
+        <div class="inline-block pb-6 w-6 h-2 bg-red-500"></div>
+        <label> Absent </label>
+        <div class="inline-block pb-6 w-6 h-2 bg-cyan-500"></div>
+        <label> Not yet </label>
+    </div>
+    <div class="relative my-0 mx-auto mb-12 w-3/4 overflow-x-auto text-center shadow-md sm:rounded-xl">
       <table class="w-full">
         <thead class="bg-blue-600 text-xs uppercase text-white">
           <tr>
-            <th class="px-6 py-2" rowspan="2"></th>
+            <th class="px-6 py-2">
+                  Year: <input class="w-1/2 border-box rounded-lg border border-gray-500 bg-gray-200 p-2" value="" type="text" placeholder="Type here..." />
+              </th>
             <th class="px-6 pt-4" scope="col">Mon</th>
             <th class="px-6 pt-4" scope="col">Tue</th>
             <th class="px-6 pt-4" scope="col">Wed</th>
@@ -37,6 +49,24 @@
             <th class="px-6 pt-4" scope="col">Sun</th>
           </tr>
           <tr>
+              <th class="px-6 py-2">
+                  Week: 
+                  <select class="w-1/2 border-box rounded-lg border border-gray-500 bg-gray-200 p-2" value="">
+                      <c:forEach items="${requestScope.weekRanges}" var="wr">
+                          <option>
+                              <fmt:formatDate value="${wr[0]}" pattern="dd/MM"/>
+                               - 
+                              <fmt:formatDate value="${wr[1]}" pattern="dd/MM"/>
+                          </option>
+                      </c:forEach>
+                  </select>
+              </th>
+            <c:forEach items="${requestScope.dates}" var="d">
+                <th class="px-6 pb-4 text-base" scope="col">
+                    <fmt:formatDate value="${d}" pattern="dd/MM" />
+                </th>
+             </c:forEach>
+                <!--
             <th class="px-6 pb-4 text-base" scope="col">(6/2)</th>
             <th class="px-6 pb-4 text-base" scope="col">(7/2)</th>
             <th class="px-6 pb-4 text-base" scope="col">(8/2)</th>
@@ -44,180 +74,54 @@
             <th class="px-6 pb-4 text-base" scope="col">(10/2)</th>
             <th class="px-6 pb-4 text-base" scope="col">(11/2)</th>
             <th class="px-6 pb-4 text-base" scope="col">(12/2)</th>
+                -->
           </tr>
         </thead>
         <tbody>
-            
-          <tr>
-            <td class="px-6 py-3 text-base" scope="row">Slot 1</td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-green-500 px-2 py-3 hover:cursor-pointer hover:bg-green-600">
-                <label class="text-sm font-bold text-gray-300">IOT1702</label>
-                <label class="text-base font-bold text-white">PRJ301</label> <br/>
-                <label class="text-xs italic text-white">at BE-301</label>
-                <div class="bg-orange-400 px-2 rounded-lg">
-                  <label class="text-xs font-bold text-white">9:10-10:40</label>
-                </div>
-              </div>
-            </td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-green-500 px-6 py-3">
-                <label class="text-sm font-bold text-gray-300">IOT1702</label>
-                <label class="text-base font-bold text-white">PRJ301</label>
-                <label class="text-xs italic text-white">at BE-301</label>
-              </div>
-            </td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-cyan-500 px-6 py-3">
-                <label class="text-sm font-bold text-gray-300">IOT1702</label>
-                <label class="text-base font-bold text-white">PRJ301</label>
-                <label class="text-xs italic text-white">at BE-301</label>
-                <div class="bg-orange-400 px-2 rounded-lg">
-                  <label class="text-xs font-bold text-white">9:10-10:40</label>
-                </div>
-              </div>
-            </td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-          </tr>
-          <tr>
-            <td class="px-6 py-3 text-base" scope="row">Slot 2</td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-red-500 px-6 py-3">
-                <label class="text-sm font-bold text-gray-300">AI1604</label>
-                <label class="text-base font-bold text-white">DBI202</label>
-                <label class="text-xs italic text-white">at BE-315</label>
-              </div>
-            </td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-green-500 px-6 py-3">
-                <label class="text-sm font-bold text-gray-300">AI1604</label>
-                <label class="text-base font-bold text-white">DBI202</label>
-                <label class="text-xs italic text-white">at BE-315</label>
-              </div>
-            </td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-cyan-500 px-6 py-3">
-                <label class="text-xs font-bold text-gray-300">SE1501-NET</label>
-                <label class="text-base font-bold text-white">PRU211m</label>
-                <label class="text-xs italic text-white">at BE-331</label>
-              </div>
-            </td>
-            <td class="h-4 w-6 text-base">
-              <div class="h-full w-full bg-cyan-500 px-6 py-3">
-                <label class="text-sm font-bold text-gray-300">AI1604</label>
-                <label class="text-base font-bold text-white">DBI202</label>
-                <label class="text-xs italic text-white">at BE-315</label>
-              </div>
-            </td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-          </tr>
-          <tr>
-            <td class="px-6 py-3 text-base" scope="row">Slot 3</td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-green-500 px-6 py-3">
-                <label class="text-sm font-bold text-gray-300">SE1610</label>
-                <label class="text-base font-bold text-white">PRJ301</label>
-                <label class="text-xs italic text-white">at DE-217</label>
-              </div>
-            </td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-green-500 px-6 py-3">
-                <label class="text-xs font-bold text-gray-300">SE1501-NET</label>
-                <label class="text-base font-bold text-white">PRU211m</label>
-                <label class="text-xs italic text-white">at BE-331</label>
-              </div>
-            </td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-green-500 px-6 py-3">
-                <label class="text-sm font-bold text-gray-300">SE1610</label>
-                <label class="text-base font-bold text-white">PRJ301</label>
-                <label class="text-xs italic text-white">at DE-217</label>
-              </div>
-            </td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-cyan-500 px-6 py-3">
-                <label class="text-xs font-bold text-gray-300">SE1501-NET</label>
-                <label class="text-base font-bold text-white">PRU211m</label>
-                <label class="text-xs italic text-white">at BE-331</label>
-              </div>
-            </td>
-            <td class="h-3 w-6 text-base">
-              <div class="h-full w-full bg-cyan-500 px-6 py-3">
-                <label class="text-sm font-bold text-gray-300">SE1610</label>
-                <label class="text-base font-bold text-white">PRJ301</label>
-                <label class="text-xs italic text-white">at DE-217</label>
-              </div>
-            </td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-          </tr>
-          <tr>
-            <td class="px-6 py-3 text-base" scope="row">Slot 4</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-          </tr>
-          <tr>
-            <td class="px-6 py-3 text-base" scope="row">Slot 5</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-          </tr>
-          <tr>
-            <td class="px-6 py-3 text-base" scope="row">Slot 6</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-          </tr>
-          <tr>
-            <td class="px-6 py-3 text-base" scope="row">Slot 7</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-          </tr>
-          <tr>
-            <td class="px-6 py-3 text-base" scope="row">Slot 8</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-          </tr>
-          <tr>
-            <td class="px-6 py-3 text-base" scope="row">Slot 9</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-            <td class="px-6 py-3 text-base">-</td>
-          </tr>
+            <c:set var="tblind" scope="session" value="0"/>
+            <c:forEach items="${requestScope.slots}" var="s">
+                <c:if test="${!s.getSlotId().endsWith('P')}">
+                    <tr <c:if test="${tblind % 2 == 0}">class="bg-slate-100"</c:if>>
+                        <td class="w-[23%]"> Slot ${s.slotId} </td>
+                        <c:set var = "found" scope="session" value = "0"/>
+                        <c:forEach items="${requestScope.dates}" var="d">
+                            <c:set var = "found" scope="session" value = "0"/>
+                            <c:forEach items="${requestScope.sessions}" var="ses">
+                                <c:if test="${String.valueOf(ses.timeSlot.slotId.charAt(0)).equals(s.slotId) and ses.conductDate eq d}">
+                                    <td class="h-3 w-[11%] text-base">
+                                    <div class="group group-hover:cursor-pointer h-full w-full bg-green-500 px-2 py-3 hover:cursor-pointer hover:bg-green-600">
+                                        <label class="text-sm font-bold text-gray-300">${ses.getGroup().getGroupName()}</label> <br/>
+                                        <label class="text-base font-bold text-white">${ses.getGroup().getCourse().getCourseCode()}</label> <br/>
+                                        <label class="text-xs italic text-white">at ${ses.getRoom().getRoomName()}</label>
+                                        <div class="bg-orange-400 px-2 rounded-lg">
+                                            <label class="text-xs font-bold text-white">
+                                                <fmt:formatDate type="time" value="${ses.getTimeSlot().getStartTime()}" pattern="H:mm" />
+                                                -
+                                                <fmt:formatDate type="time" value="${ses.getTimeSlot().getEndTime()}" pattern="H:mm" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                    </td>
+                                    <c:set var = "found" scope = "session" value = "1"/>
+                                </c:if>
+                            </c:forEach>
+                                <c:if test="${found eq 0}">
+                                    <td class="px-2 py-12 w-[11%] text-base">-</td>
+                                </c:if>
+                            
+                        </c:forEach>
+                    </tr>
+                    <c:set var="tblind" scope="session" value="${tblind+1}"/>
+                </c:if>      
+            </c:forEach>
+          
         </tbody>
       </table>
     </div>
+    <script>
+        function openAttendance(location) {
+            window.href.location = 'attendancecheck?sesid=' + location;
+        }
+    </script>
   </body>
 </html>

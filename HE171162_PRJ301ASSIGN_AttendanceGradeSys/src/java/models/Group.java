@@ -4,14 +4,18 @@
  */
 package models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class Group {
     int groupId;
-    String groupName, courseID;
-    Student[] students;
+    String groupName;
+    ArrayList<Student> students = new ArrayList<>();
+    ArrayList<Session> sessions = new ArrayList<>();
+    Course course;
 
     public Group() {
     }
@@ -32,21 +36,31 @@ public class Group {
         this.groupName = groupName;
     }
 
-    public String getCourseID() {
-        return courseID;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourseID(String courseID) {
-        this.courseID = courseID;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public Student[] getStudents() {
+    public ArrayList<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Student[] students) {
+    public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
+
+    public ArrayList<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
+    }
+    
+    
     
     
 }

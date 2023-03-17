@@ -4,12 +4,15 @@
  */
 package models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class Instructor {
     String instructorId, firstName, middleName, lastName;
+    ArrayList<Session> sessions = new ArrayList<>();
 
     public Instructor() {
     }
@@ -45,6 +48,16 @@ public class Instructor {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public ArrayList<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
+    }
+    
+    
     
     
 }

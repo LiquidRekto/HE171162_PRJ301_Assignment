@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.User;
+import models.*;
 
 /**
  *
@@ -23,8 +23,10 @@ public class UserDBContext extends DBContext<User> {
     }
 
     public User get(String email, String password) {
-        String sql = "SELECT UserEmail,DisplayName FROM [Users] \n"
-                + "WHERE UserEmail = ? AND [Password] = ?";
+        String sql = "SELECT u.UserEmail, u.DisplayName, i.InstructorID, i.LastName, i.MiddleName, i.FirstName, i.Email\n" +
+                     "FROM Instructors i\n" +
+                     "INNER JOIN Users u ON i.Email = u.UserEmail\n" +
+                     "WHERE u.UserEmail = ? AND u.[Password] = ?";
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
@@ -37,6 +39,15 @@ public class UserDBContext extends DBContext<User> {
                 User s = new User();
                 s.setEmail(email);
                 s.setDisplayName(rs.getString("DisplayName"));
+                
+                Instructor i = new Instructor();
+                i.setInstructorId(rs.getString("InstructorID"));
+                i.setLastName(rs.getString("LastName"));
+                i.setMiddleName(rs.getString("MiddleName"));
+                i.setFirstName(rs.getString("FirstName"));
+                
+                s.setInstructor(i);
+                
                 return s;
             }
         } catch (SQLException ex) {

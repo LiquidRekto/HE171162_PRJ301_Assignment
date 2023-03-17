@@ -4,12 +4,15 @@
  */
 package models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class Student {
     String studentId, firstName, middleName, lastName;
+    ArrayList<Group> groups = new ArrayList<>();
 
     public Student() {
     }
@@ -45,6 +48,16 @@ public class Student {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
+    }
+    
+    
     
     @Override
     public String toString() {

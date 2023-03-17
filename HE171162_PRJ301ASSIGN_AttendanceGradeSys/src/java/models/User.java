@@ -10,6 +10,7 @@ package models;
  */
 public class User {
     private String email, password, displayName;
+    Instructor instructor;
 
     public User() {
     }
@@ -37,6 +38,16 @@ public class User {
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+    
+    
     
     
 

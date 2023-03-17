@@ -20,20 +20,14 @@ use [HE171162_University];
 
 
 CREATE TABLE Rooms(
-	RoomID VARCHAR(8) PRIMARY KEY,
-	Building VARCHAR(64)
+	RoomID INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
+	RoomName VARCHAR(8) UNIQUE
 );
 
 CREATE TABLE Courses(
-	CourseID VARCHAR(16) PRIMARY KEY,
+	CourseID INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
+	CourseCode VARCHAR(16) UNIQUE,
 	CourseDescription NVARCHAR(1024)
-);
-
-CREATE TABLE Instructors(
-	InstructorID VARCHAR(8) PRIMARY KEY,
-	FirstName NVARCHAR(256),
-	MiddleName NVARCHAR(256),
-	LastName NVARCHAR(256),
 );
 
 CREATE TABLE [Users] (
@@ -43,10 +37,21 @@ CREATE TABLE [Users] (
 	CONSTRAINT ck_UserEmail CHECK (UserEmail LIKE '%_@__%.__%')
 );
 
-CREATE TABLE Groups(
+CREATE TABLE Instructors(
+	InstructorID VARCHAR(8) PRIMARY KEY,
+	FirstName NVARCHAR(256),
+	MiddleName NVARCHAR(256),
+	LastName NVARCHAR(256),
+	Email VARCHAR(256),
+	FOREIGN KEY (Email) REFERENCES [Users](UserEmail)
+);
+
+
+
+CREATE TABLE Groups (
 	GroupID INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
 	GroupName VARCHAR(16),
-	CourseID VARCHAR(16),
+	CourseID INT,
 	FOREIGN KEY (CourseID) REFERENCES Courses(CourseID),
 	CONSTRAINT uk_Group_Course UNIQUE (GroupName, [CourseID])
 
@@ -74,7 +79,7 @@ CREATE TABLE [Sessions] (
 	Instructor VARCHAR(8),
 	[Group] INT,
 	TimeSlot VARCHAR(2),
-	Room VARCHAR(8),
+	Room INT,
 	InstructorStatus INT,
 	ConductDate DATE,
 	FOREIGN KEY (Instructor) REFERENCES Instructors(InstructorID),
@@ -118,13 +123,14 @@ CREATE TABLE Attend (
 */
 
 INSERT INTO Users VALUES
-('sa@mail.com','12345','admin');
+('sa@mail.com','12345','admin'),
+('sonnt69@fe.edu.vn','12345','sonnt');
 
 INSERT INTO Instructors VALUES
-('sonnt5','Son','Tung','Ngo'),
-('bantq','Ban','Quy','Tran'),
-('tuanvm2','Tuan','Minh','Vuong'),
-('hailt','Hai','Thanh','Le');
+('sonnt5','Son','Tung','Ngo','sonnt69@fe.edu.vn'),
+('bantq','Ban','Quy','Tran',NULL),
+('tuanvm2','Tuan','Minh','Vuong',NULL),
+('hailt','Hai','Thanh','Le',NULL);
 
 INSERT INTO Courses VALUES
 ('PRJ301','Java Web Application Development'),
@@ -185,28 +191,28 @@ INSERT INTO TimeSlots VALUES
 ('5','14:30:00','16:00:00'),
 ('6','16:10:00','17:40:00');
 
-INSERT INTO Rooms VALUES
-('BE-301','Beta'),
-('BE-303','Beta'),
-('BE-305','Beta'),
-('BE-306','Beta'),
-('BE-307','Beta'),
-('BE-308','Beta'),
-('DE-305','Delta'),
-('DE-306','Delta'),
-('DE-307','Delta'),
-('DE-308','Delta'),
-('AL-203R','Alpha'),
-('AL-204R','Alpha'),
-('AL-203L','Alpha'),
-('AL-204L','Alpha');
+INSERT INTO Rooms (RoomName) VALUES
+('BE-301'),
+('BE-303'),
+('BE-305'),
+('BE-306'),
+('BE-307'),
+('BE-308'),
+('DE-305'),
+('DE-306'),
+('DE-307'),
+('DE-308'),
+('AL-203R'),
+('AL-204R'),
+('AL-203L'),
+('AL-204L');
 
 INSERT INTO Groups (GroupName, [CourseID]) VALUES 
-('IOT1702','PRJ301'),
-('SE1723','PRO192'),
-('ISE_1723','PRJ301'),
-('SE1723','IOT102'),
-('SE1726','DBI202');
+('IOT1702',1),
+('SE1723',7),
+('ISE_1723',1),
+('SE1723',3),
+('SE1726',5);
 
 INSERT INTO [Join] (StudentID, GroupID) VALUES
 ('HE171073',3),
@@ -225,9 +231,9 @@ INSERT INTO [Join] (StudentID, GroupID) VALUES
 ('HE163146',3);
 
 INSERT INTO [Sessions] (SessionName, Instructor, [Group], TimeSlot, Room, InstructorStatus, ConductDate) VALUES
-('Create a Servlet', 'sonnt5',3,'1P','BE-303',1,'2023-02-06'),
-('Sessions and Cookies','sonnt5',3,'1P','BE-303',1,'2023-02-10'),
-('Workshop 1', 'sonnt5',3,'1P','BE-303',1,'2023-02-14');
+('Create a Servlet', 'sonnt5',3,'1P',2,1,'2023-02-06'),
+('Sessions and Cookies','sonnt5',3,'3P',2,1,'2023-02-10'),
+('Workshop 1', 'sonnt5',3,'1P',2,1,'2023-02-14');
 /*
 ('Introduction to Databases', 'bantq',4,'2P','DE-307',1,'2023-02-12'),
 

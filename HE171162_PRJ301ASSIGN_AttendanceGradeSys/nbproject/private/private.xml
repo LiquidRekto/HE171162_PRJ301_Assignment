@@ -9,6 +9,7 @@
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/InstructorDBContext.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/StudentDBContext.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/MainController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Course.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/TestController.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/User.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/cfg/MyDBConfig.java</file>
@@ -19,11 +20,11 @@
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Student.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/WeeklyScheduleController.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/TimeSlot.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/utils/DateTimeHelper.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Session.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Instructor.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/AttendanceCheckController.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/DBContext.java</file>
-            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/TestMd.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Room.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/DBConfig.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/testing/TestDBController.java</file>

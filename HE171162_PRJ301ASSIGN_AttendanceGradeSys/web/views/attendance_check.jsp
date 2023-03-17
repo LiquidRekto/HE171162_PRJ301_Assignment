@@ -19,7 +19,7 @@
     </h1>
     <div class="w-full py-10 text-center">
       <div class="inline-block px-2">
-        <label> Taker: <b class="text-xl"> sonnt </b> </label>
+        <label> Taker: <b class="text-xl"> ${sessionScope.user.getInstructor().getInstructorId()} </b> </label>
       </div>
     </div>
     <form>
