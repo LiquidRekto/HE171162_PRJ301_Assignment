@@ -9,7 +9,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import models.User;
+import models.*;
+import dal.*;
+import cfg.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,16 +22,42 @@ public class AttendanceCheckController extends BaseRequiredAuthenticatedControll
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
-        
+        String[] sids = request.getParameterValues("studentId");
+        String taker = user.getInstructor().getInstructorId();
+        int sesid = Integer.parseInt(request.getParameter("sessionId"));
+        ArrayList<Attend> attendances = new ArrayList<>();
+        for (String sid : sids) {
+            Student s = new Student();
+            s.setStudentId(sid);
+            Attend a = new Attend();
+            a.setId(Integer.parseInt(request.getParameter("attend-"+sid)));
+            a.setStudent(s);
+            a.setStatus(request.getParameter("status-"+sid).equals("attended"));
+            a.setInstructorComments(request.getParameter("insComment-"+sid));
+            attendances.add(a);
+        }
+        AttendDBContext db = new AttendDBContext(MyDBConfig.getConfig());
+        db.updateAttendance(attendances, sesid, taker);
+        request.getRequestDispatcher("views/attendance_finnotify.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
         String sessParam = request.getParameter("sesid");
+        
         if (sessParam == null) {
             response.getWriter().println("Not available!");
         } else {
             int sesId = Integer.parseInt(sessParam);
+            AttendDBContext ctx = new AttendDBContext(MyDBConfig.getConfig());
+            ArrayList<Attend> attendances = ctx.getAttendanceBySessionId(sesId);
+            for (Attend a : attendances) {
+                System.out.println(a.getStudent().getStudentId());
+            }
+            SessionDBContext sesctx = new SessionDBContext(MyDBConfig.getConfig());
+            Session ses = sesctx.get(sesId);
+            request.setAttribute("attendlist", attendances);
+            request.setAttribute("chosenSes", ses);
             request.getRequestDispatcher("views/attendance_check.jsp").forward(request, response);
         }
         

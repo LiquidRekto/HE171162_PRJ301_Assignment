@@ -38,7 +38,7 @@ CREATE TABLE [Users] (
 );
 
 CREATE TABLE Instructors(
-	InstructorID VARCHAR(8) PRIMARY KEY,
+	InstructorID VARCHAR(32) PRIMARY KEY,
 	FirstName NVARCHAR(256),
 	MiddleName NVARCHAR(256),
 	LastName NVARCHAR(256),
@@ -76,11 +76,11 @@ CREATE TABLE Students(
 CREATE TABLE [Sessions] (
 	SessionID INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
 	SessionName TEXT,
-	Instructor VARCHAR(8),
+	Instructor VARCHAR(32),
 	[Group] INT,
 	TimeSlot VARCHAR(2),
 	Room INT,
-	InstructorStatus INT,
+	InstructorStatus BIT,
 	ConductDate DATE,
 	FOREIGN KEY (Instructor) REFERENCES Instructors(InstructorID),
 	FOREIGN KEY ([Group]) REFERENCES Groups(GroupID),
@@ -98,7 +98,7 @@ CREATE TABLE [Join](
 );
 
 CREATE TABLE AssignTo(
-	InstructorID VARCHAR(8),
+	InstructorID VARCHAR(32),
 	GroupID INT,
 	FOREIGN KEY (InstructorID) REFERENCES Instructors(InstructorID),
 	FOREIGN KEY (GroupID) REFERENCES Groups(GroupID),
@@ -108,11 +108,13 @@ CREATE TABLE AssignTo(
 
 /* N - N TABLES */
 CREATE TABLE Attend (
+	AttendID INT PRIMARY KEY NOT NULL IDENTITY(1, 1),
 	Student VARCHAR(8) NOT NULL,
 	[Session] INT NOT NULL,
-	[Status] INT,
+	[Status] BIT,
 	RecordDate DATETIME,
-	InstructorComment TEXT,
+	TakenBy VARCHAR(32),
+	InstructorComment NTEXT,
 	CONSTRAINT fk_StudentAttend FOREIGN KEY (Student) REFERENCES Students(StudentID),
 	FOREIGN KEY ([Session]) REFERENCES [Sessions](SessionID),
 	CONSTRAINT uk_Student_Session UNIQUE (Student, [Session])
@@ -231,16 +233,17 @@ INSERT INTO [Join] (StudentID, GroupID) VALUES
 ('HE163146',3);
 
 INSERT INTO [Sessions] (SessionName, Instructor, [Group], TimeSlot, Room, InstructorStatus, ConductDate) VALUES
-('Create a Servlet', 'sonnt5',3,'1P',2,1,'2023-02-06'),
-('Sessions and Cookies','sonnt5',3,'3P',2,1,'2023-02-10'),
-('Workshop 1', 'sonnt5',3,'1P',2,1,'2023-02-14');
+('Create a Servlet', 'sonnt5',3,'1P',2,0,'2023-02-06'),
+('Sessions and Cookies','sonnt5',3,'3P',2,0,'2023-02-10'),
+('Workshop 1', 'sonnt5',3,'1P',2,0,'2023-02-14'),
+('Introduction to Databases', 'bantq',1,'2P',2,0,'2023-03-16');
 /*
 ('Introduction to Databases', 'bantq',4,'2P','DE-307',1,'2023-02-12'),
 
 ('JSP Authentication',  'sonnt5',1,'2P','BE-301',1,'2023-02-16')
 */
 
-
+/*
 INSERT INTO [Attend] VALUES
 ('HE171162',1,1,'2023-02-24 13:00:25',''),
 ('HE170245',1,1,'2023-02-24 13:00:25',''),
@@ -248,6 +251,7 @@ INSERT INTO [Attend] VALUES
 ('HE171162',2,1,'2023-02-24 13:00:25',''),
 ('HE170245',2,0,'2023-02-24 13:00:25',''),
 ('HE171071',2,0,'2023-02-24 13:00:25','');
+*/
 
 
 
