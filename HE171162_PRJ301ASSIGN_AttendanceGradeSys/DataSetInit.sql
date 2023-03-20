@@ -235,7 +235,10 @@ INSERT INTO [Join] (StudentID, GroupID) VALUES
 
 INSERT INTO [Sessions] (SessionName, Instructor, [Group], TimeSlot, Room, InstructorStatus, ConductDate) VALUES
 ('Create a Servlet', 'sonnt5',3,'1P',2,0,'2023-02-06'),
+('Interface in Java', 'sonnt5',3,'3P',2,0,'2023-02-06'),
 ('Sessions and Cookies','sonnt5',3,'3P',2,0,'2023-02-10'),
+('burh 1','sonnt5',3,'1P',2,0,'2023-03-20'),
+('burh 2','sonnt5',3,'2P',2,0,'2023-03-20'),
 ('Workshop 1', 'sonnt5',3,'1P',2,0,'2023-02-14'),
 ('Introduction to Databases', 'bantq',1,'2P',2,0,'2023-03-16');
 /*

@@ -24,7 +24,14 @@ public class LogoutController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        String url = request.getParameter("prevUrl");
         request.getSession().setAttribute("user", null);
+        if (url == null) {
+            request.setAttribute("target", "login");
+        } else {
+            String ctxy = request.getContextPath();
+            request.setAttribute("target", url.substring(url.lastIndexOf(ctxy)+ctxy.length()+1));
+        }
         request.getRequestDispatcher("views/logout.jsp").forward(request, response);
     } 
 

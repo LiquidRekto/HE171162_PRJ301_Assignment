@@ -1,8 +1,4 @@
-<%-- 
-    Document   : logout
-    Created on : Feb 21, 2023, 2:11:31 PM
-    Author     : sonnt
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,9 +11,9 @@
     <body class="text-center">
         <h1 class="font-bold text-2xl mt-2">Logout successful!</h1>
         <br/>
-        <p class="text-lg"> You will be directed to the login page after <span class="font-bold text-xl text-red-500" id="time"></span> seconds... </p>
+        <p class="text-lg"> You will be redirected to the same page after <span class="font-bold text-xl text-red-500" id="time"></span> seconds... </p>
         <script> 
-        var count =3;
+        var count = 2;
         var time = document.getElementById('time');
         time.innerHTML = count;
         function counting()
@@ -26,7 +22,7 @@
             time.innerHTML = count;
             if(count <= 0 )
             {
-                window.location.href = 'login';
+                window.location.href = "${requestScope.target}";
             }
         }
         setInterval(counting,1000);

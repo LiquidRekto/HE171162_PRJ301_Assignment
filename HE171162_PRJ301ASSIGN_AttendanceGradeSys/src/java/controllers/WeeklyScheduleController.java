@@ -36,20 +36,27 @@ public class WeeklyScheduleController extends BaseRequiredAuthenticatedControlle
         java.sql.Date[] rangeWeek = DateTimeHelper.getCurrentWeekRange();
         ArrayList<Date> dates = new ArrayList<>();
         int weekNum = 0;
-        if (request.getParameter("from") == null || request.getParameter("to") == null) {
+        int year = 0;
+        if (request.getParameter("week") == null || request.getParameter("year") == null) {
             dates = DateTimeHelper.getListDates(rangeWeek[0], rangeWeek[1]);
+            year = DateTimeHelper.getCurrentYear();
             weekNum = DateTimeHelper.getCurrentWeekRangeNum();
         } else {
-            Date from = Date.valueOf(request.getParameter("from"));
-            Date to = Date.valueOf(request.getParameter("to"));
-            dates = DateTimeHelper.getListDates(from, to);
-            weekNum = DateTimeHelper.getWeekNumFromDate(from);
+            weekNum = Integer.parseInt(request.getParameter("week"));
+            year = Integer.parseInt(request.getParameter("year"));
+            dates = DateTimeHelper.getListDatesOfWeekYear(weekNum, year);
+            for (Date d : dates) {
+                System.out.println(d);
+            }
+            
         }
         TimeSlotDBContext dbts = new TimeSlotDBContext(MyDBConfig.getConfig());
         ArrayList<TimeSlot> timeSlots = dbts.all();
         
         request.setAttribute("weekRanges",DateTimeHelper.getAllWeekRangesOfYear());
+        request.setAttribute("yearRange",DateTimeHelper.generateFiveYearRange());
         request.setAttribute("curWeek",weekNum);
+        request.setAttribute("curYear",year);
         request.setAttribute("sessions", sessions);
         request.setAttribute("slots",timeSlots);
         request.setAttribute("dates",dates);

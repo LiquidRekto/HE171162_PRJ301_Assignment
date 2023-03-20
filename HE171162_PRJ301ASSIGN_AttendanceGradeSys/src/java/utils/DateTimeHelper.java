@@ -43,13 +43,53 @@ public class DateTimeHelper {
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         
         // Gets Monday
-        range[0] = convertUtilToSqlDate(calendar.getTime());
+        range[0] = convertUtilToSqlDate(keepOnlyDatePart(calendar.getTime()));
 
         //// Gets Sunday
         calendar.add(Calendar.DATE, 6);
-        range[1] = convertUtilToSqlDate(calendar.getTime());
+        range[1] = convertUtilToSqlDate(keepOnlyDatePart(calendar.getTime()));
         
         return range;
+    }
+    
+    public static java.sql.Date getTodayDate() {
+        return (convertUtilToSqlDate(keepOnlyDatePart(Calendar.getInstance().getTime())));
+    }
+    
+    public static ArrayList<java.sql.Date> getListDatesOfWeekYear(int weekNum, int year) {
+        Calendar cl = Calendar.getInstance();
+        cl.set(Calendar.YEAR,year);
+        cl.set(Calendar.WEEK_OF_YEAR, weekNum);
+        ArrayList<java.sql.Date> dates = new ArrayList<>();
+        cl.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        java.sql.Date loop = convertUtilToSqlDate(keepOnlyDatePart(cl.getTime()));
+        cl.add(Calendar.DATE, 6);
+        java.sql.Date to = convertUtilToSqlDate(cl.getTime());
+        while(loop.compareTo(to) <= 0)
+        {
+            dates.add(loop);
+            java.util.Date d = convertSqlToUtilDate(loop);
+            d = addDays(d, 1);
+            d = keepOnlyDatePart(d);
+            loop = convertUtilToSqlDate(d);
+        }
+        return dates;
+    }
+    
+    public static int getCurrentYear() {
+        Calendar cl = Calendar.getInstance();
+        return cl.get(Calendar.YEAR);
+    }
+    
+    public static ArrayList<Integer> generateFiveYearRange() {
+        Calendar cl = Calendar.getInstance();
+        ArrayList<Integer> years = new ArrayList<>();
+        int beginYear = cl.get(Calendar.YEAR) - 2;
+        for (int i = 0; i < 5; i++) {
+            years.add(beginYear);
+            beginYear++;
+        }
+        return years;
     }
 
     public static ArrayList<java.sql.Date> getListDates(java.sql.Date from, java.sql.Date to) {

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : assigned_group_view
-    Created on : Mar 19, 2023, 5:45:42 PM
+    Document   : today_check
+    Created on : Mar 20, 2023, 2:39:12 PM
     Author     : Admin
 --%>
 
@@ -17,29 +17,31 @@
     <body class="flex flex-col h-screen">
         <%@include file="header.jsp" %>
         <div class="mb-auto">
-        <h1 class="text-center font-bold my-6 text-3xl">Assigned Group(s) of: ${sessionScope.user.getInstructor().getInstructorId()}</h1>
-        <div class="w-3/5 my-0 mt-4 mx-auto text-center overflow-x-auto text-center shadow-md sm:rounded-xl">
+            <h1 class="text-center font-bold mt-4 text-3xl">Today's available Sessions</h1>
+            <div class="w-4/5 my-0 mt-4 mx-auto text-center overflow-x-auto text-center shadow-md sm:rounded-xl">
             <table class="w-full">
           <input type="hidden" name="sessionId" value="${requestScope.chosenSes.getSessionId()}"/>
         <thead class="bg-blue-600 text-xs uppercase text-white">
           <tr>
             <th class="px-6 py-3" scope="col">No.</th>
-            <th class="px-6 py-3" scope="col">Group Name</th>
             <th class="px-6 py-3" scope="col">Course Code</th>
-            <th class="px-6 py-3" scope="col">Course Description</th>
+            <th class="px-6 py-3" scope="col">Session Name</th>
+            <th class="px-6 py-3" scope="col">Time Slot</th>
+            <th class="px-6 py-3" scope="col">Room</th>
             <th class="px-6 py-3" scope="col"></th>
           </tr>
         </thead>
         <tbody>
-            <c:forEach items="${requestScope.groups}" var="g" varStatus="loop">
+            <c:forEach items="${requestScope.sessions}" var="ses" varStatus="loop">
                 <tr>
                     <td class="px-6 py-3">${loop.index+1}</td>
-                    <td class="px-6 py-3">${g.getGroupName()}</td>
-                    <td class="px-6 py-3">${g.getCourse().getCourseCode()}</td>
-                    <td class="px-6 py-3">${g.getCourse().getDescription()}</td>
+                    <td class="px-6 py-3">${ses.getGroup().getCourse().getCourseCode()}</td>
+                    <td class="px-6 py-3">${ses.getSessionName()}</td>
+                    <td class="px-6 py-3">${ses.getTimeSlot().getSlotId()}</td>
+                    <td class="px-6 py-3">${ses.getRoom().getRoomName()}</td>
                     
                     <td class="">
-                        <a class="rounded-lg text-white bg-blue-600 font-bold px-3 py-2" href="groupview?groupid=${g.getGroupId()}"> View Status </a>
+                        <a class="rounded-lg text-white bg-blue-600 font-bold px-3 py-2" href="attendancecheck?sesid=${ses.getSessionId()}"> Take Attendance </a>
                     </td>
                     
                 </div>
@@ -47,8 +49,8 @@
             </c:forEach>
         </tbody>
         </table>
+            </div>
         </div>
-    </div>
         <%@include file="footer.jsp" %>
     </body>
 </html>

@@ -22,7 +22,7 @@
         </div>
       <div style="display: none" id="infobox" class="bg-slate-200 p-1 z-50 right-0 top-0 overflow-hidden fixed mt-20 mr-4 rounded-lg">
           <a href="profile"><p class="hover:bg-slate-100 rounded-lg px-8 py-2 text-lg" >View Profile</p></a>
-          <a href="logout"><p class="hover:bg-slate-100 rounded-lg px-8 py-2 text-lg">Log out</p></a>
+          <a href="logout?prevUrl=${requestScope['jakarta.servlet.forward.request_uri']}"><p class="hover:bg-slate-100 rounded-lg px-8 py-2 text-lg">Log out</p></a>
       </div>
         <div class="py-10"></div><!-- comment -->
         <script>

@@ -31,9 +31,8 @@ public class ProfileController extends BaseRequiredAuthenticatedController {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response, User user)
             throws ServletException, IOException {
                 request.getRequestDispatcher("views/profile.jsp").forward(request, response);
-        }
+        
     }
 
-    
-
+   
 }

@@ -64,7 +64,7 @@ public class InstructorDBContext extends DBContext<Instructor> {
     }
     
     public ArrayList<Group> getGroups(String instructorId) {
-        String sql = "SELECT g.GroupID, g.GroupName, c.CourseID, c.CourseCode FROM AssignTo [at]\n" +
+        String sql = "SELECT g.GroupID, g.GroupName, c.CourseID, c.CourseCode, c.CourseDescription FROM AssignTo [at]\n" +
                      "INNER JOIN [Groups] g ON [at].GroupID = g.GroupID\n" +
                      "INNER JOIN Courses c ON c.CourseID = g.CourseID\n" +
                      "WHERE [at].InstructorID = ?";
@@ -86,6 +86,7 @@ public class InstructorDBContext extends DBContext<Instructor> {
                 Course c = new Course();
                 c.setCourseId(rs.getInt("CourseID"));
                 c.setCourseCode(rs.getString("CourseCode"));
+                c.setDescription(rs.getString("CourseDescription"));
                 System.out.println("[CUSTOMINFO] Created course id: " + c.getCourseId());
                 g.setCourse(c);
                 

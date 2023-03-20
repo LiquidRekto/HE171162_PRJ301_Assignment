@@ -26,17 +26,24 @@
     <div class="text-center mx-0 my-8">
         <div class="inline-block pb-6 w-6 h-2 bg-green-500"></div>
         <label> Attended </label>
-        <div class="inline-block pb-6 w-6 h-2 bg-red-500"></div>
-        <label> Absent </label>
         <div class="inline-block pb-6 w-6 h-2 bg-cyan-500"></div>
         <label> Not yet </label>
     </div>
     <div class="relative my-0 mx-auto mb-12 w-3/4 overflow-x-auto text-center shadow-md sm:rounded-xl">
       <table class="w-full">
+        
         <thead class="bg-blue-600 text-xs uppercase text-white">
+            <form id="weekYearForm" method="GET" action="schedule">
           <tr>
             <th class="px-6 py-2">
-                  Year: <input class="w-1/2 border-box rounded-lg border border-gray-500 bg-gray-200 p-2" value="" type="text" placeholder="Type here..." />
+                  Year:
+                  <select name="year" onchange="submitForm()" class="w-1/2 text-black border-box rounded-lg border border-gray-500 bg-gray-200 p-2">
+                      <c:forEach items="${requestScope.yearRange}" var="y">
+                          <option <c:if test="${requestScope.curYear eq y}">selected</c:if> value="${y}">
+                              ${y}
+                          </option>
+                      </c:forEach>
+                  </select>
               </th>
             <th class="px-6 pt-4" scope="col">Mon</th>
             <th class="px-6 pt-4" scope="col">Tue</th>
@@ -49,7 +56,7 @@
           <tr>
               <th class="px-6 py-2">
                   Week: 
-                  <select onchange="" class="w-1/2 text-black border-box rounded-lg border border-gray-500 bg-gray-200 p-2">
+                  <select name="week" onchange="submitForm()" class="w-1/2 text-black border-box rounded-lg border border-gray-500 bg-gray-200 p-2">
                       <c:forEach items="${requestScope.weekRanges.keySet()}" var="key">
                           <option <c:if test="${curWeek eq key}">selected</c:if> value="${key}">
                               <fmt:formatDate value="${requestScope.weekRanges.get(key)[0]}" pattern="dd/MM"/>
@@ -59,9 +66,9 @@
                       </c:forEach>
                   </select>
               </th>
-            <c:forEach items="${requestScope.dates}" var="d">
+            <c:forEach items="${requestScope.dates}" var="dl">
                 <th class="px-6 pb-4 text-base" scope="col">
-                    <fmt:formatDate value="${d}" pattern="dd/MM" />
+                    <fmt:formatDate value="${dl}" pattern="dd/MM" />
                 </th>
              </c:forEach>
                 <!--
@@ -74,7 +81,9 @@
             <th class="px-6 pb-4 text-base" scope="col">(12/2)</th>
                 -->
           </tr>
+          </form>
         </thead>
+        
         <tbody>
             <c:set var="tblind" scope="session" value="0"/>
             <c:forEach items="${requestScope.slots}" var="s">
@@ -85,7 +94,7 @@
                         <c:forEach items="${requestScope.dates}" var="d">
                             <c:set var = "found" scope="session" value = "0"/>
                             <c:forEach items="${requestScope.sessions}" var="ses">
-                                <c:if test="${String.valueOf(ses.timeSlot.slotId.charAt(0)).equals(s.slotId) and ses.conductDate eq d}">
+                                <c:if test="${String.valueOf(ses.timeSlot.slotId.charAt(0)).equals(s.slotId) and ses.conductDate.time eq d.time}">
                                     <td class="h-3 w-[11%] text-base">
                                     <div onclick="openAttendance(${ses.getSessionId()})" class="group group-hover:cursor-pointer h-full w-full  
                                          <c:choose>
@@ -136,6 +145,12 @@
         function setToRange(from, to) {
             window.location.href = "schedule?from=" + from + "&to=" + to;
         }
+        
+        var wyform = document.getElementById('weekYearForm');
+        function submitForm() {
+            wyform.submit();
+        }
+
     </script>
     
   </body>

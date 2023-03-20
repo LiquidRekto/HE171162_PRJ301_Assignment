@@ -35,9 +35,9 @@
             <form method="post" action="login" class="my-0 mx-auto w-5/6">
                 <input type="hidden" name="targetUrl" value="${requestScope.targetUrl}">
                 <label class="text-xl font-bold my-2"> Email </label> <br/>
-                <input name="email" class="my-2 w-full border-box rounded-lg border border-gray-500 bg-gray-200 p-2" type="text" placeholder="abcxyz@example.com" /> <br/>
+                <input required name="email" class="my-2 w-full border-box rounded-lg border border-gray-500 bg-gray-200 p-2" type="text" placeholder="abcxyz@example.com" /> <br/>
                 <label class="text-xl font-bold my-2"> Password </label> <br/>
-                <input name="password" class="my-2 w-full border-box rounded-lg border border-gray-500 bg-gray-200 p-2" type="password" placeholder="••••••••" /> <br/>
+                <input required name="password" class="my-2 w-full border-box rounded-lg border border-gray-500 bg-gray-200 p-2" type="password" placeholder="••••••••" /> <br/>
                 <button type="submit" class="border-box rounded-lg bg-blue-700 w-full my-4 px-6 py-3 font-bold text-white hover:bg-blue-600">Sign in</button>
             </form>
         </div>

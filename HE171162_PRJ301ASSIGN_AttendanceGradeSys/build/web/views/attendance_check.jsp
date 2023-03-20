@@ -56,10 +56,10 @@
                   <input type="hidden" name="studentId" value="${att.getStudent().getStudentId()}"/>
                   <input type="hidden" name="attend-${att.getStudent().getStudentId()}" value="${att.getId()}"/>
             <td class="px-6 py-3 text-base">${loop.index+1}</td>
-            <td class="px-6 py-3 text-base">${att.getStudent().getStudentId()}</td>
-            <td class="px-6 py-3 text-base">${att.getStudent().getLastName()}</td>
-            <td class="px-6 py-3 text-base">${att.getStudent().getMiddleName()}</td>
-            <td class="px-6 py-3 text-base">${att.getStudent().getFirstName()}</td>
+            <td class="px-6 py-3 text-blue-700 text-base">${att.getStudent().getStudentId()}</td>
+            <td class="px-6 py-3 text-blue-700 text-base">${att.getStudent().getLastName()}</td>
+            <td class="px-6 py-3 text-blue-700 text-base">${att.getStudent().getMiddleName()}</td>
+            <td class="px-6 py-3 text-blue-700 text-base">${att.getStudent().getFirstName()}</td>
             <td class="px-4 py-3 text-base object-cover text-center">
                 <img width="192" class="rounded-xl inline-block" onerror="this.src='images/not-found.png'" src="../images/${att.getStudent().getStudentId()}.png">
             </td>
@@ -79,7 +79,7 @@
             <c:if test="${requestScope.chosenSes.getInstructorStatus()}">
                 <td class="px-6 py-3 text-base">${att.getPrevTaker()}</td>
                 <td class="px-6 py-3 text-base">
-                    <fmt:formatDate value="${att.getRecordDate()}" type="both"/>
+                    <fmt:formatDate value="${att.getRecordDate()}" pattern="dd/MM/yyyy-hh:mm:ss a" type="both"/>
                 </td>
               </c:if>
               </tr>

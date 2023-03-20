@@ -39,6 +39,7 @@ public class AttendanceCheckController extends BaseRequiredAuthenticatedControll
         }
         AttendDBContext db = new AttendDBContext(MyDBConfig.getConfig());
         db.updateAttendance(attendances, sesid, taker);
+        request.setAttribute("ses",request.getParameter("sessionId"));
         request.getRequestDispatcher("views/attendance_finnotify.jsp").forward(request, response);
     }
 
