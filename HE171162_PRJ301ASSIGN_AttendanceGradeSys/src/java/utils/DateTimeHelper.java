@@ -4,13 +4,13 @@
  */
 package utils;
 
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.*;
 
 
 public class DateTimeHelper {
     
-    public static ArrayList<java.sql.Date[]> getAllWeekRangesOfYear() {
+    public static Map<Integer, java.sql.Date[]> getAllWeekRangesOfYear() {
+        Map<Integer, java.sql.Date[]> weekMap = new HashMap<Integer, java.sql.Date[]>();
         Calendar calendar = Calendar.getInstance();
         ArrayList<java.sql.Date[]> listWeekRanges = new ArrayList<>();
         int maxWeeks = calendar.getActualMaximum(Calendar.WEEK_OF_YEAR);
@@ -21,9 +21,20 @@ public class DateTimeHelper {
             range[0] = convertUtilToSqlDate(calendar.getTime());
             calendar.add(Calendar.DATE, 6);
             range[1] = convertUtilToSqlDate(calendar.getTime());
-            listWeekRanges.add(range);
+            weekMap.put(i, range);
         }
-        return listWeekRanges;
+        return weekMap;
+    }
+    
+    public static int getWeekNumFromDate(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.WEEK_OF_YEAR);
+    }
+    
+    public static int getCurrentWeekRangeNum() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.WEEK_OF_YEAR);
     }
     
     public static java.sql.Date[] getCurrentWeekRange() {
@@ -68,6 +79,10 @@ public class DateTimeHelper {
 
     public static java.util.Date convertSqlToUtilDate(java.sql.Date sqlDate) {
         return new java.util.Date(sqlDate.getTime());
+    }
+    
+    public static java.sql.Timestamp convertUtilToSqlTimestamp(java.util.Date date) {
+        return new java.sql.Timestamp(date.getTime());
     }
 
     public static java.util.Date keepOnlyDatePart(java.util.Date date) {

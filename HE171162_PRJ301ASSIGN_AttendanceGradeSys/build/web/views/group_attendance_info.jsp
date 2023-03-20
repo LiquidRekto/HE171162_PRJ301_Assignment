@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +14,43 @@
         <link rel="stylesheet" href="css/dist/index.css" />
     </head>
     <body>
-        <div class="fixed z-50 w-full bg-blue-600 p-4 text-left">
-        <p class="text-xl font-bold text-white">FPT Academic Portal</p>
-        </div>
-
-        <div class="py-10"></div>
-        <h1 class="my-10 text-center text-3xl font-bold">Attendance Overview of Group: </h1>
+        <%@include file="header.jsp" %>
+        <h1 class="my-10 text-center text-3xl font-bold">Attendance Overview of Group: ${requestScope.group} - PRJ301</h1>
+        
+        <div class="relative my-0 mx-auto mb-12 w-5/6 overflow-x-auto text-center shadow-md sm:rounded-xl">
+      <table class="w-full">
+        <thead class="bg-blue-600 text-xs uppercase text-white">
+          <tr>
+            <th class="px-6 py-3" scope="col">No.</th>
+            <th class="px-6 py-6" scope="col">Roll Number</th>
+            <th class="px-6 py-6" scope="col">Last Name</th>
+            <th class="px-6 py-6" scope="col">Middle Name</th>
+            <th class="px-6 py-6" scope="col">First Name</th>
+            <th class="px-6 py-6 w-1/3" scope="col">Absent Penalty</th>
+          </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${requestScope.stsList}" var="as" varStatus="loop">
+                <tr>
+                    <td class="px-6 py-3" scope="col">${loop.index+1}</td>
+                    <td class="px-6 py-6" scope="col">${as.getStd().getStudentId()}</td>
+                    <td class="px-6 py-6" scope="col">${as.getStd().getLastName()}</td>
+                    <td class="px-6 py-6" scope="col">${as.getStd().getMiddleName()}</td>
+                    <td class="px-6 py-6" scope="col">${as.getStd().getFirstName()}</td>
+                    <td class="px-6 py-6" scope="col">
+                        <div class="relative pt-1 mx-5">
+                            <div class="overflow-hidden h-2 text-xs flex rounded-xl bg-emerald-400">
+                                <div style="width: ${as.getAbsentSessions()/5.0*100}%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </c:forEach>
+          
+        </tbody>
+      </table>
+    </div>
+     <%@include file="footer.jsp" %>
     </body>
 </html>
+

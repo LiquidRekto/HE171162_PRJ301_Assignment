@@ -3,21 +3,34 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Session.java</file>
-            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/AttendanceCheckController.java</file>
-            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Attend.java</file>
-            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/AttendDBContext.java</file>
-            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/MainController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/authentication/InstructorAuthentication.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/authentication/LogoutController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/InstructorDBContext.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Course.java</file>
-            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/TestController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/User.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/ProfileController.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/cfg/MyDBConfig.java</file>
-            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/DBConfig.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/SessionDBContext.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/RoomDBContext.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/HomeController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/authentication/LoginController.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Student.java</file>
-            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Group.java</file>
             <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/WeeklyScheduleController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/TimeSlot.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/utils/DateTimeHelper.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Session.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Instructor.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/AttendanceCheckController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/AttendDBContext.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Attend.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/DBContext.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/AttendStatus.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Room.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/DBConfig.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/authentication/BaseRequiredAuthenticatedController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/controllers/GroupAttendanceViewerController.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/models/Group.java</file>
+            <file>file:/D:/FPT%20DESK/ASSIGNMENTS/PRJ301/HE171162_PRJ301ASSIGN_AttendanceGradeSys/src/java/dal/GroupDBContext.java</file>
         </group>
     </open-files>
 </project-private>

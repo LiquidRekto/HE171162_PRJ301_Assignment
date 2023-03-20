@@ -10,8 +10,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="css/dist/index.css"/>
     </head>
-    <body>
+    <body class="flex flex-col h-screen">
+        <%@include file="header.jsp" %>
+        <div class="mb-auto">
         <h1>Submit successful</h1>
+        </div>
+        <%@include file="footer.jsp" %>
     </body>
 </html>

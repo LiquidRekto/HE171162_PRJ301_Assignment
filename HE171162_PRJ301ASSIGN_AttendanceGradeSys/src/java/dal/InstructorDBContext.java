@@ -63,6 +63,57 @@ public class InstructorDBContext extends DBContext<Instructor> {
         return null;
     }
     
+    public ArrayList<Group> getGroups(String instructorId) {
+        String sql = "SELECT g.GroupID, g.GroupName, c.CourseID, c.CourseCode FROM AssignTo [at]\n" +
+                     "INNER JOIN [Groups] g ON [at].GroupID = g.GroupID\n" +
+                     "INNER JOIN Courses c ON c.CourseID = g.CourseID\n" +
+                     "WHERE [at].InstructorID = ?";
+        ArrayList<Group> groups = new ArrayList<>();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, instructorId);
+            rs = stm.executeQuery();
+            System.out.println("[CUSTOMINFO] Execute successful!...");
+            while (rs.next()) {
+                
+                Group g = new Group();
+                g.setGroupId(rs.getInt("GroupID"));
+                g.setGroupName(rs.getString("GroupName"));
+                System.out.println("[CUSTOMINFO] Created group id: " + g.getGroupId());
+                
+                Course c = new Course();
+                c.setCourseId(rs.getInt("CourseID"));
+                c.setCourseCode(rs.getString("CourseCode"));
+                System.out.println("[CUSTOMINFO] Created course id: " + c.getCourseId());
+                g.setCourse(c);
+                
+                groups.add(g);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InstructorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InstructorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InstructorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InstructorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return groups;
+    }
+    
     public ArrayList<Session> getSessions(String instructorId) {
         System.out.println("[CUSTOMINFO] Getting sessions from instructor id: " + instructorId);
         System.out.println("[CUSTOMINFO] Performing session retrieve...");

@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,11 +9,7 @@
     <link rel="stylesheet" href="css/dist/index.css" />
   </head>
   <body class="text-center">
-    <div class="fixed z-50 w-full bg-blue-600 p-4 text-left">
-      <p class="text-xl font-bold text-white">FPT Academic Portal</p>
-    </div>
-
-    <div class="py-10"></div>
+    <%@include file="header.jsp" %>
     <h1 class="my-10 text-center text-3xl font-bold">
       Attendance Check for: <br/>
       Slot ${requestScope.chosenSes.getTimeSlot().getSlotId()} - ${requestScope.chosenSes.getGroup().getGroupName()} - ${requestScope.chosenSes.getGroup().getCourse().getCourseCode()} at ${requestScope.chosenSes.getRoom().getRoomName()}
@@ -23,7 +20,17 @@
       </div>
     </div>
     <form action="attendancecheck" method="POST">
-    <div class="relative my-0 mx-auto mb-12 w-5/6 overflow-x-auto text-center shadow-md sm:rounded-xl">
+    <div class="relative my-0 mx-auto mb-12 
+         <c:choose>
+             <c:when test="${requestScope.chosenSes.getInstructorStatus()}">
+                 w-11/12 
+             </c:when>
+             <c:otherwise>
+                 w-5/6 
+             </c:otherwise>
+         </c:choose>
+         
+         overflow-x-auto text-center shadow-md sm:rounded-xl">
         
       <table class="w-full">
           <input type="hidden" name="sessionId" value="${requestScope.chosenSes.getSessionId()}"/>
@@ -37,6 +44,10 @@
             <th class="px-6 py-6" scope="col">Image</th>
             <th class="px-6 py-6" scope="col">Status</th>
             <th class="px-6 py-6" scope="col">Comment</th>
+            <c:if test="${requestScope.chosenSes.getInstructorStatus()}">
+                <th class="px-6 py-6" scope="col">Taken By</th>
+                <th class="px-6 py-6" scope="col">Recent Record</th>
+             </c:if>
           </tr>
         </thead>
         <tbody>
@@ -65,7 +76,14 @@
             <td class="px-4 py-2 text-base">
               <textarea name="insComment-${att.getStudent().getStudentId()}" rows="6" placeholder="Write your comment here..."class="rounded-xl resize-none h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left">${att.getInstructorComments()}</textarea>
             </td>
+            <c:if test="${requestScope.chosenSes.getInstructorStatus()}">
+                <td class="px-6 py-3 text-base">${att.getPrevTaker()}</td>
+                <td class="px-6 py-3 text-base">
+                    <fmt:formatDate value="${att.getRecordDate()}" type="both"/>
+                </td>
+              </c:if>
               </tr>
+              
           </c:forEach>
           
         </tbody>

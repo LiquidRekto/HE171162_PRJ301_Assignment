@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package models;
-import java.sql.Date;
+import java.sql.Timestamp;
 /**
  *
  * @author Admin
@@ -15,7 +15,7 @@ public class Attend {
     boolean status;
     String prevTaker;
     String instructorComments;
-    Date recordDate;
+    Timestamp recordDate;
 
     public Attend() {
     }
@@ -60,11 +60,11 @@ public class Attend {
         this.instructorComments = instructorComments;
     }
 
-    public Date getRecordDate() {
+    public Timestamp getRecordDate() {
         return recordDate;
     }
 
-    public void setRecordDate(Date recordDate) {
+    public void setRecordDate(Timestamp recordDate) {
         this.recordDate = recordDate;
     }
 

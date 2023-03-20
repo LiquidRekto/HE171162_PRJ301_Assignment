@@ -12,11 +12,11 @@
     
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login - FAP Attendace System</title>
+        <title>Login - FPT Instructor Portal</title>
         <link rel="stylesheet" href="css/dist/index.css" />
     </head>
     <body class="">
-        <h1 class="text-center text-3xl font-bold my-12">FAP Attendance System</h1>
+        <h1 class="text-center text-3xl font-bold my-12">FPT Instructor Portal</h1>
         <c:choose>
             <c:when test="${requestScope.state.equals('failed')}">
                 <div class="p-4 my-4 bg-red-200 w-1/4 rounded-xl my-0 mx-auto">

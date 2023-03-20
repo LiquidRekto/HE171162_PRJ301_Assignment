@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Instructor {
     String instructorId, firstName, middleName, lastName;
     ArrayList<Session> sessions = new ArrayList<>();
+    ArrayList<Group> groups = new ArrayList<>();
 
     public Instructor() {
     }
@@ -55,6 +56,14 @@ public class Instructor {
 
     public void setSessions(ArrayList<Session> sessions) {
         this.sessions = sessions;
+    }
+
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
     }
     
     

@@ -15,10 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import models.User;
 import cfg.*;
 
-/**
- *
- * @author sonnt
- */
+
 public class LoginController extends HttpServlet {
    
     

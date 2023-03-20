@@ -4,8 +4,14 @@
  */
 package dal;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Group;
+import models.Instructor;
 
 /**
  *
@@ -35,6 +41,40 @@ public class GroupDBContext extends DBContext<Group> {
     @Override
     public Group get(int id) {
         return new Group();
+    }
+    
+    public String getGroupName(int groupId) {
+        String sql = "SELECT GroupName FROM Groups WHERE GroupID = ?";
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, groupId);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                return rs.getString("GroupName");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InstructorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InstructorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InstructorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InstructorDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
     }
 
     public ArrayList<Group> all() {

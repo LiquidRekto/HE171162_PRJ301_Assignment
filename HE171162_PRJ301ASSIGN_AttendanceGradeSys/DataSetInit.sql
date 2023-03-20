@@ -126,11 +126,12 @@ CREATE TABLE Attend (
 
 INSERT INTO Users VALUES
 ('sa@mail.com','12345','admin'),
-('sonnt69@fe.edu.vn','12345','sonnt');
+('sonnt69@fe.edu.vn','12345','sonnt'),
+('bantq@fe.edu.vn','12345','bantq');
 
 INSERT INTO Instructors VALUES
 ('sonnt5','Son','Tung','Ngo','sonnt69@fe.edu.vn'),
-('bantq','Ban','Quy','Tran',NULL),
+('bantq','Ban','Quy','Tran','bantq@fe.edu.vn'),
 ('tuanvm2','Tuan','Minh','Vuong',NULL),
 ('hailt','Hai','Thanh','Le',NULL);
 
@@ -242,6 +243,9 @@ INSERT INTO [Sessions] (SessionName, Instructor, [Group], TimeSlot, Room, Instru
 
 ('JSP Authentication',  'sonnt5',1,'2P','BE-301',1,'2023-02-16')
 */
+
+INSERT INTO [AssignTo] (InstructorID, GroupID) VALUES
+('sonnt5',3);
 
 /*
 INSERT INTO [Attend] VALUES

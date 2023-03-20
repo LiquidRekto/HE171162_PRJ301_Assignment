@@ -10,10 +10,8 @@
     <link rel="stylesheet" href="css/dist/index.css" />
   </head>
   <body>
-    <div class="fixed z-50 w-full bg-orange-400 p-4 text-left">
-      <p class="text-xl font-bold text-white">FPT Academic Portal</p>
-    </div>
-
+        <%@include file="header.jsp" %>
+      
     <div class="py-10"></div>
     <h1 class="my-10 text-center text-3xl font-bold">Weekly Schedule</h1>
     <div class="w-full py-10 text-center">
@@ -51,12 +49,12 @@
           <tr>
               <th class="px-6 py-2">
                   Week: 
-                  <select class="w-1/2 border-box rounded-lg border border-gray-500 bg-gray-200 p-2" value="">
-                      <c:forEach items="${requestScope.weekRanges}" var="wr">
-                          <option>
-                              <fmt:formatDate value="${wr[0]}" pattern="dd/MM"/>
+                  <select onchange="" class="w-1/2 text-black border-box rounded-lg border border-gray-500 bg-gray-200 p-2">
+                      <c:forEach items="${requestScope.weekRanges.keySet()}" var="key">
+                          <option <c:if test="${curWeek eq key}">selected</c:if> value="${key}">
+                              <fmt:formatDate value="${requestScope.weekRanges.get(key)[0]}" pattern="dd/MM"/>
                                - 
-                              <fmt:formatDate value="${wr[1]}" pattern="dd/MM"/>
+                              <fmt:formatDate value="${requestScope.weekRanges.get(key)[1]}" pattern="dd/MM"/>
                           </option>
                       </c:forEach>
                   </select>
@@ -129,10 +127,16 @@
         </tbody>
       </table>
     </div>
+    <%@include file="footer.jsp" %>
     <script>
         function openAttendance(location) {
             window.location.href = 'attendancecheck?sesid=' + location;
         }
+        
+        function setToRange(from, to) {
+            window.location.href = "schedule?from=" + from + "&to=" + to;
+        }
     </script>
+    
   </body>
 </html>

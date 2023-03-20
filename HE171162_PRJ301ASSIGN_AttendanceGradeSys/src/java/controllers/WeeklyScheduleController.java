@@ -35,17 +35,21 @@ public class WeeklyScheduleController extends BaseRequiredAuthenticatedControlle
         request.setAttribute("insSessions", sessions);
         java.sql.Date[] rangeWeek = DateTimeHelper.getCurrentWeekRange();
         ArrayList<Date> dates = new ArrayList<>();
+        int weekNum = 0;
         if (request.getParameter("from") == null || request.getParameter("to") == null) {
             dates = DateTimeHelper.getListDates(rangeWeek[0], rangeWeek[1]);
+            weekNum = DateTimeHelper.getCurrentWeekRangeNum();
         } else {
             Date from = Date.valueOf(request.getParameter("from"));
             Date to = Date.valueOf(request.getParameter("to"));
             dates = DateTimeHelper.getListDates(from, to);
+            weekNum = DateTimeHelper.getWeekNumFromDate(from);
         }
         TimeSlotDBContext dbts = new TimeSlotDBContext(MyDBConfig.getConfig());
         ArrayList<TimeSlot> timeSlots = dbts.all();
         
         request.setAttribute("weekRanges",DateTimeHelper.getAllWeekRangesOfYear());
+        request.setAttribute("curWeek",weekNum);
         request.setAttribute("sessions", sessions);
         request.setAttribute("slots",timeSlots);
         request.setAttribute("dates",dates);
