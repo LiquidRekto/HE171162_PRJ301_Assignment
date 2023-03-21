@@ -31,12 +31,16 @@
         </thead>
         <tbody>
             <c:forEach items="${requestScope.stsList}" var="as" varStatus="loop">
-                <tr>
+                <tr class="
+                    <c:if test="${as.getAbsentSessions() ge 5}">
+                        bg-yellow-100
+                    </c:if>
+                    ">
                     <td class="px-6 py-3" scope="col">${loop.index+1}</td>
-                    <td class="px-6 py-6" scope="col">${as.getStd().getStudentId()}</td>
-                    <td class="px-6 py-6" scope="col">${as.getStd().getLastName()}</td>
-                    <td class="px-6 py-6" scope="col">${as.getStd().getMiddleName()}</td>
-                    <td class="px-6 py-6" scope="col">${as.getStd().getFirstName()}</td>
+                    <td class="px-6 py-6 text-blue-700" scope="col">${as.getStd().getStudentId()}</td>
+                    <td class="px-6 py-6 text-blue-700" scope="col">${as.getStd().getLastName()}</td>
+                    <td class="px-6 py-6 text-blue-700" scope="col">${as.getStd().getMiddleName()}</td>
+                    <td class="px-6 py-6 text-blue-700" scope="col">${as.getStd().getFirstName()}</td>
                     <td class="px-6 py-6" scope="col">
                         <div class="relative pt-1 mx-5">
                             <div class="overflow-hidden h-2 text-xs flex rounded-xl bg-emerald-400">

@@ -53,10 +53,11 @@ public class WeeklyScheduleController extends BaseRequiredAuthenticatedControlle
         TimeSlotDBContext dbts = new TimeSlotDBContext(MyDBConfig.getConfig());
         ArrayList<TimeSlot> timeSlots = dbts.all();
         
-        request.setAttribute("weekRanges",DateTimeHelper.getAllWeekRangesOfYear());
+        request.setAttribute("weekRanges",DateTimeHelper.getAllWeekRangesOfYear(year));
         request.setAttribute("yearRange",DateTimeHelper.generateFiveYearRange());
         request.setAttribute("curWeek",weekNum);
         request.setAttribute("curYear",year);
+        request.setAttribute("curDate",DateTimeHelper.getTodayDate());
         request.setAttribute("sessions", sessions);
         request.setAttribute("slots",timeSlots);
         request.setAttribute("dates",dates);

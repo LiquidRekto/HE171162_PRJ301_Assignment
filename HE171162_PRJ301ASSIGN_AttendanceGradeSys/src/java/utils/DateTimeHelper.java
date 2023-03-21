@@ -9,9 +9,10 @@ import java.util.*;
 
 public class DateTimeHelper {
     
-    public static Map<Integer, java.sql.Date[]> getAllWeekRangesOfYear() {
+    public static Map<Integer, java.sql.Date[]> getAllWeekRangesOfYear(int year) {
         Map<Integer, java.sql.Date[]> weekMap = new HashMap<Integer, java.sql.Date[]>();
         Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
         ArrayList<java.sql.Date[]> listWeekRanges = new ArrayList<>();
         int maxWeeks = calendar.getActualMaximum(Calendar.WEEK_OF_YEAR);
         for (int i = 1; i <= maxWeeks; i++) {
@@ -56,6 +57,10 @@ public class DateTimeHelper {
         return (convertUtilToSqlDate(keepOnlyDatePart(Calendar.getInstance().getTime())));
     }
     
+    public static java.sql.Timestamp getTodayDateWithTime() {
+        return (convertUtilToSqlTimestamp(Calendar.getInstance().getTime()));
+    }
+    
     public static ArrayList<java.sql.Date> getListDatesOfWeekYear(int weekNum, int year) {
         Calendar cl = Calendar.getInstance();
         cl.set(Calendar.YEAR,year);
@@ -80,6 +85,7 @@ public class DateTimeHelper {
         Calendar cl = Calendar.getInstance();
         return cl.get(Calendar.YEAR);
     }
+    
     
     public static ArrayList<Integer> generateFiveYearRange() {
         Calendar cl = Calendar.getInstance();

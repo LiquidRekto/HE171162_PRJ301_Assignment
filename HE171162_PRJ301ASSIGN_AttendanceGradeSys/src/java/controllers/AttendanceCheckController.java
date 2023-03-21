@@ -12,9 +12,10 @@ import java.io.IOException;
 import models.*;
 import dal.*;
 import cfg.*;
+import java.sql.*;
 import utils.*;
 import java.util.ArrayList;
-
+import java.util.Calendar;
 /**
  *
  * @author Admin
@@ -56,10 +57,25 @@ public class AttendanceCheckController extends BaseRequiredAuthenticatedControll
             for (Attend a : attendances) {
                 System.out.println(a.getStudent().getStudentId());
             }
+            Calendar cl = Calendar.getInstance();
+            
             SessionDBContext sesctx = new SessionDBContext(MyDBConfig.getConfig());
             Session ses = sesctx.get(sesId);
+            cl.setTime(DateTimeHelper.convertSqlToUtilDate(ses.getConductDate()));
+            Time time = ses.getTimeSlot().getStartTime();
+            int hour = time.getHours();
+            int minute = time.getMinutes();
+            int second = time.getSeconds();
+            System.out.println(time + " " + hour + " " + minute + " " + second);
+            cl.set(Calendar.HOUR, hour);
+            cl.set(Calendar.MINUTE, minute);
+            cl.set(Calendar.SECOND, second);
+            cl.add(Calendar.DATE, 1);
+            Timestamp due = DateTimeHelper.convertUtilToSqlTimestamp(cl.getTime());
             request.setAttribute("attendlist", attendances);
             request.setAttribute("chosenSes", ses);
+            request.setAttribute("dueDate",due);
+            request.setAttribute("isOverdue", DateTimeHelper.getTodayDateWithTime().getTime() - due.getTime() > 0);
             request.getRequestDispatcher("views/attendance_check.jsp").forward(request, response);
         }
         

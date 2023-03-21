@@ -27,7 +27,9 @@
         <div class="inline-block pb-6 w-6 h-2 bg-green-500"></div>
         <label> Attended </label>
         <div class="inline-block pb-6 w-6 h-2 bg-cyan-500"></div>
-        <label> Not yet </label>
+        <label> Available </label>
+        <div class="inline-block pb-6 w-6 h-2 bg-gray-500"></div>
+        <label> Not available </label>
     </div>
     <div class="relative my-0 mx-auto mb-12 w-3/4 overflow-x-auto text-center shadow-md sm:rounded-xl">
       <table class="w-full">
@@ -96,8 +98,11 @@
                             <c:forEach items="${requestScope.sessions}" var="ses">
                                 <c:if test="${String.valueOf(ses.timeSlot.slotId.charAt(0)).equals(s.slotId) and ses.conductDate.time eq d.time}">
                                     <td class="h-3 w-[11%] text-base">
-                                    <div onclick="openAttendance(${ses.getSessionId()})" class="group group-hover:cursor-pointer h-full w-full  
+                                        <div <c:if test="${requestScope.curDate.time - d.time >= 0}"> onclick="openAttendance(${ses.getSessionId()})" </c:if> class="group group-hover:cursor-pointer h-full w-full  
                                          <c:choose>
+                                             <c:when test="${requestScope.curDate.time - d.time < 0}">
+                                                 bg-gray-500
+                                             </c:when>
                                              <c:when test="${ses.getInstructorStatus()}">
                                                  bg-green-500
                                                  hover:bg-green-600

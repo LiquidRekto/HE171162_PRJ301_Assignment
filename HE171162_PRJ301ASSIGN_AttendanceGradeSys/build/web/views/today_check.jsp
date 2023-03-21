@@ -18,7 +18,7 @@
         <%@include file="header.jsp" %>
         <div class="mb-auto">
             <h1 class="text-center font-bold mt-4 text-3xl">Today's available Sessions</h1>
-            <div class="w-4/5 my-0 mt-4 mx-auto text-center overflow-x-auto text-center shadow-md sm:rounded-xl">
+            <div class="w-3/5 my-0 mt-4 mx-auto text-center overflow-x-auto text-center shadow-md sm:rounded-xl">
             <table class="w-full">
           <input type="hidden" name="sessionId" value="${requestScope.chosenSes.getSessionId()}"/>
         <thead class="bg-blue-600 text-xs uppercase text-white">
@@ -41,7 +41,15 @@
                     <td class="px-6 py-3">${ses.getRoom().getRoomName()}</td>
                     
                     <td class="">
-                        <a class="rounded-lg text-white bg-blue-600 font-bold px-3 py-2" href="attendancecheck?sesid=${ses.getSessionId()}"> Take Attendance </a>
+                        <c:choose>
+                            <c:when test="${ses.getInstructorStatus()}">
+                                <a class="rounded-lg text-white bg-green-600 hover:bg-green-700 font-bold px-3 py-2" href="attendancecheck?sesid=${ses.getSessionId()}"> Edit Attendance </a>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="rounded-lg text-white bg-blue-600 hover:bg-blue-700 font-bold px-3 py-2" href="attendancecheck?sesid=${ses.getSessionId()}"> Take Attendance </a>
+                            </c:otherwise>
+                        </c:choose>
+                        
                     </td>
                     
                 </div>

@@ -43,7 +43,7 @@ public class SessionDBContext extends DBContext<Session> {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT ses.SessionID, c.CourseCode, ses.SessionName, i.LastName, i.MiddleName, i.FirstName, g.GroupName,\n" +
+            String sql = "SELECT ses.SessionID, ses.ConductDate, c.CourseCode, ses.SessionName, i.LastName, i.MiddleName, i.FirstName, g.GroupName,\n" +
                          "ses.TimeSlot, t.StartTime, t.EndTime, r.RoomName, ses.InstructorStatus\n" +
                          "FROM [Sessions] ses\n" +
                          "INNER JOIN [Groups] g ON ses.[Group] = g.GroupID\n" +
@@ -60,6 +60,7 @@ public class SessionDBContext extends DBContext<Session> {
                 s.setSessionId(id);
                 s.setSessionName(rs.getString("SessionName"));
                 s.setInstructorStatus(rs.getBoolean("InstructorStatus"));
+                s.setConductDate(rs.getDate("ConductDate"));
                 
                 Instructor i = new Instructor();
                 i.setFirstName(rs.getString("FirstName"));

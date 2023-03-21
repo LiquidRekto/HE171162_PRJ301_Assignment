@@ -14,6 +14,18 @@
       Attendance Check for: <br/>
       Slot ${requestScope.chosenSes.getTimeSlot().getSlotId()} - ${requestScope.chosenSes.getGroup().getGroupName()} - ${requestScope.chosenSes.getGroup().getCourse().getCourseCode()} at ${requestScope.chosenSes.getRoom().getRoomName()}
     </h1>
+      <c:choose>
+        <c:when test="${requestScope.isOverdue}">
+            <h1 class="text-red-500 text-xl">
+                Sorry, this attendance form is now read-only.
+            </h1>
+        </c:when>
+          <c:otherwise>
+              <h1 class="text-lg">
+                After 24 hours from the slot Start Time (which is <fmt:formatDate value="${requestScope.dueDate}" pattern="dd/MM/yyyy-hh:mm:ss a" type="both"/>), the system will lock the attendance check.
+              </h1>
+          </c:otherwise>
+      </c:choose>
     <div class="w-full py-10 text-center">
       <div class="inline-block px-2">
         <label> Taker: <b class="text-xl"> ${sessionScope.user.getInstructor().getInstructorId()} </b> </label>
@@ -65,16 +77,16 @@
             </td>
             <td class="px-6 py-3 text-base">
                 <div class="flex items-center mb-4">
-                    <input name="status-${att.getStudent().getStudentId()}" <c:if test='${!att.isPresent()}'>checked</c:if> id="absent" type="radio" value="absent" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
+                    <input <c:if test="${requestScope.isOverdue}">disabled</c:if> name="status-${att.getStudent().getStudentId()}" <c:if test='${!att.isPresent()}'>checked</c:if> id="absent" type="radio" value="absent" name="default-radio" class="peer/absent w-4 h-4 bg-gray-100 border-gray-300  dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
     <label for="absent" class="peer-checked/absent:text-red-500 text-gray-400 ml-2 text-sm font-medium">Absent</label>
 </div>
 <div class="flex items-center">
-    <input name="status-${att.getStudent().getStudentId()}" <c:if test='${att.isPresent()}'>checked</c:if> id="attended" type="radio" value="attended" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
+    <input <c:if test="${requestScope.isOverdue}">disabled</c:if> name="status-${att.getStudent().getStudentId()}" <c:if test='${att.isPresent()}'>checked</c:if> id="attended" type="radio" value="attended" name="default-radio" class="peer/attended w-4 h-4  bg-gray-100 border-gray-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"/>
     <label for="attended" class="peer-checked/attended:text-green-500 text-gray-400 ml-2 text-sm font-medium">Attended</label>
 </div>
             </td>
             <td class="px-4 py-2 text-base">
-              <textarea name="insComment-${att.getStudent().getStudentId()}" rows="6" placeholder="Write your comment here..."class="rounded-xl resize-none h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left">${att.getInstructorComments()}</textarea>
+              <textarea <c:if test="${requestScope.isOverdue}">disabled</c:if> name="insComment-${att.getStudent().getStudentId()}" rows="6" placeholder="Write your comment here..."class="rounded-xl resize-none h-full px-2 py-1 border-gray-400 bg-slate-100 border text-left">${att.getInstructorComments()}</textarea>
             </td>
             <c:if test="${requestScope.chosenSes.getInstructorStatus()}">
                 <td class="px-6 py-3 text-base">${att.getPrevTaker()}</td>
@@ -89,6 +101,7 @@
         </tbody>
       </table>
     </div>
+    <c:if test="${not requestScope.isOverdue}">
     <button type="submit" class="mb-12 text-center border-box rounded-lg bg-green-500 px-6 py-3 font-bold text-white hover:bg-green-600">
         <c:choose>
             <c:when test="${requestScope.chosenSes.getInstructorStatus()}">
@@ -100,6 +113,7 @@
         </c:choose>
        attendance
     </button>
+    </c:if>
     </form>
   </body>
 </html>
