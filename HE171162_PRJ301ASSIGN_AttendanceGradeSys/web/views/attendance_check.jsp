@@ -13,9 +13,9 @@
     <h1 class="my-10 text-center text-3xl font-bold">
       Attendance Check for: <br/>
       Slot ${requestScope.chosenSes.getTimeSlot().getSlotId()} (
-      <fmt:formatDate value="${requestScope.chosenSes.getTimeSlot().getStartTime()}" pattern="h:mm" type="time"/>
+      <fmt:formatDate value="${requestScope.chosenSes.getTimeSlot().getStartTime()}" pattern="h:mm a" type="time"/>
       -
-      <fmt:formatDate value="${requestScope.chosenSes.getTimeSlot().getEndTime()}" pattern="h:mm" type="time"/>
+      <fmt:formatDate value="${requestScope.chosenSes.getTimeSlot().getEndTime()}" pattern="h:mm a" type="time"/>
       ) - ${requestScope.chosenSes.getGroup().getGroupName()} - ${requestScope.chosenSes.getGroup().getCourse().getCourseCode()} at ${requestScope.chosenSes.getRoom().getRoomName()}
     </h1>
       <c:choose>
