@@ -39,7 +39,7 @@ public class TimeSlotDBContext extends DBContext<TimeSlot> {
 
     @Override
     public TimeSlot get(int id) {
-        
+        return new TimeSlot();
     }
 
     public ArrayList<TimeSlot> all() {
