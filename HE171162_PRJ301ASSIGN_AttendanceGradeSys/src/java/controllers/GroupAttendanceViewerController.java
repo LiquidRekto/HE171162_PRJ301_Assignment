@@ -35,12 +35,12 @@ public class GroupAttendanceViewerController extends BaseRequiredAuthenticatedCo
                     System.out.println(x.getAbsentSessions());
                 }
                 GroupDBContext gctx = new GroupDBContext(MyDBConfig.getConfig());
-                request.setAttribute("group", gctx.getGroupName(gid));
+                request.setAttribute("group", gctx.get(gid));
                 request.setAttribute("stsList", status);
                 request.getRequestDispatcher("views/group_attendance_info.jsp").forward(request, response);
                 
             } else {
-                response.getWriter().println("Not available");
+                response.sendRedirect("home");
             }
         }
         catch (Exception e) {

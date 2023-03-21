@@ -12,7 +12,11 @@
     <%@include file="header.jsp" %>
     <h1 class="my-10 text-center text-3xl font-bold">
       Attendance Check for: <br/>
-      Slot ${requestScope.chosenSes.getTimeSlot().getSlotId()} - ${requestScope.chosenSes.getGroup().getGroupName()} - ${requestScope.chosenSes.getGroup().getCourse().getCourseCode()} at ${requestScope.chosenSes.getRoom().getRoomName()}
+      Slot ${requestScope.chosenSes.getTimeSlot().getSlotId()} (
+      <fmt:formatDate value="${requestScope.chosenSes.getTimeSlot().getStartTime()}" pattern="h:mm" type="time"/>
+      -
+      <fmt:formatDate value="${requestScope.chosenSes.getTimeSlot().getEndTime()}" pattern="h:mm" type="time"/>
+      ) - ${requestScope.chosenSes.getGroup().getGroupName()} - ${requestScope.chosenSes.getGroup().getCourse().getCourseCode()} at ${requestScope.chosenSes.getRoom().getRoomName()}
     </h1>
       <c:choose>
         <c:when test="${requestScope.isOverdue}">
@@ -22,7 +26,7 @@
         </c:when>
           <c:otherwise>
               <h1 class="text-lg">
-                After 24 hours from the slot Start Time (which is <fmt:formatDate value="${requestScope.dueDate}" pattern="dd/MM/yyyy-hh:mm:ss a" type="both"/>), the system will lock the attendance check.
+                <span class="font-bold text-red-500">NOTE: </span>After 24 hours from the slot Start Time (which is <fmt:formatDate value="${requestScope.dueDate}" pattern="dd/MM/yyyy-hh:mm:ss a" type="both"/>), the system will lock the attendance check.
               </h1>
           </c:otherwise>
       </c:choose>

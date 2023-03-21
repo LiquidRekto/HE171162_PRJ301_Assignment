@@ -18,7 +18,7 @@
         <%@include file="header.jsp" %>
         <div class="mb-auto">
         <h1 class="text-center font-bold my-6 text-3xl">Assigned Group(s) of: ${sessionScope.user.getInstructor().getInstructorId()}</h1>
-        <div class="w-3/5 my-0 mt-4 mx-auto text-center overflow-x-auto text-center shadow-md sm:rounded-xl">
+        <div class="w-4/5 my-0 mt-4 mx-auto text-center overflow-x-auto text-center shadow-md sm:rounded-xl">
             <table class="w-full">
           <input type="hidden" name="sessionId" value="${requestScope.chosenSes.getSessionId()}"/>
         <thead class="bg-blue-600 text-xs uppercase text-white">

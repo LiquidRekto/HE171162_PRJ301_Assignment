@@ -146,7 +146,8 @@ INSERT INTO Courses VALUES
 ('PRN221','Advanced Cross-Platform Application Programming With .NET'),
 ('PRU211m','C# Programming and Unity'),
 ('SWD392','Software Architecture and Design'),
-('PRM392','Mobile Programming');
+('PRM392','Mobile Programming'),
+('AIL303m','Machine Learning');
 
 INSERT INTO Students VALUES
 ('HE150057',N'Anh',N'Nhật',N'Nguyễn'),
@@ -180,7 +181,68 @@ INSERT INTO Students VALUES
 ('HE176697',N'Tú',N'Thị Cẩm',N'Nguyễn'),
 ('HE176751',N'Đạt',N'Quốc',N'Nguyễn'),
 ('SE03520',N'Bala',N'Peter',N'Shunom'),
-('SE04495',N'Maurice',N'Obasi',N'Ntui');
+('SE04495',N'Maurice',N'Obasi',N'Ntui'),
+('HE163767',N'Huy',N'Quang',N'Nguyễn'),
+('HE170305',N'Phương',N'Thị Mai',N'Phan'),
+('HE170418',N'Dương',N'Hải',N'Nguyễn'),
+('HE170472',N'Huy',N'Đỗ',N'Lê'),
+('HE170594',N'Khải',N'Đỗ',N'Hoàng'),
+('HE170596',N'Đăng',N'Hải',N'Nguyễn'),
+('HE170696',N'Đạt',N'Tất Thành',N'Nguyễn'),
+('HE170744',N'Nam',N'Thành',N'Dương'),
+('HE170746',N'Hoàn',N'Đức',N'Lê'),
+('HE170769',N'Tuấn',N'Huy',N'Nguyễn'),
+('HE170770',N'Kiên',N'Trung',N'Hoàng'),
+('HE170776',N'Minh',N'Quang',N'Bùi'),
+('HE170952',N'Minh',N'Quang',N'Bùi'),
+('HE171047',N'Thành',N'Bá',N'Trần'),
+('HE171106',N'Huy',N'Xuân',N'Nguyễn'),
+('HE171219',N'Huy',N'Nhật',N'Nguyễn'),
+('HE171234',N'Đạt',N'Quốc',N'Đinh'),
+('HE171244',N'Minh',N'Đức',N'Nguyễn'),
+('HE171252',N'Hoàng',N'Minh',N'Dương'),
+('HE171257',N'Quang',N'Minh',N'Chu'),
+('HE171281',N'Huy',N'Đức',N'Nguyễn'),
+('HE171584',N'Hưng',N'Thế',N'Nguyễn'),
+('HE171671',N'Khánh',N'Quốc',N'Dương'),
+('HE171708',N'Anh',N'Quang',N'Đinh'),
+('HE171929',N'Châu',N'Minh',N'Nguyễn'),
+('HE172821',N'Anh',N'Hoàng Giang',N'Nguyễn'),
+('HE173502',N'Minh',N'Duy Nhật',N'Khuất'),
+('HE176220',N'Đức',N'Anh',N'Hoàng'),
+('HE179008',N'Dũng',N'Việt',N'Hồ'),
+('HE140494',N'Dương',N'Hoàng',N'Lê'),
+('HE141029',N'Long',N'Kim Hoàng',N'Dương'),
+('HE150203',N'Tùng',N'Sơn',N'Đỗ'),
+('HE150248',N'Kiên',N'Trung',N'Phan'),
+('HE150366',N'Sơn',N'Hoài',N'Nguyễn'),
+('HE150377',N'Hoàng',N'Việt',N'Nguyễn'),
+('HE150632',N'Được',N'Quốc',N'Nguyễn'),
+('HE150726',N'Anh',N'Hữu Tiến',N'Nguyễn'),
+('HE150767',N'Việt',N'Tuấn',N'Phan'),
+('HE150771',N'Nam',N'Phương',N'Nguyễn'),
+('HE150901',N'Đức',N'Minh',N'Nguyễn'),
+('HE151191',N'Đại',N'Văn',N'Lương'),
+('HE151375',N'Đạt',N'Hữu',N'Lê'),
+('HE151412',N'Phương',N'Thị',N'Nguyễn'),
+('HE151445',N'Quang',N'Minh',N'Từ'),
+('HE151472',N'Hiếu',N'Minh',N'Phạm'),
+('HE153014',N'Trai',N'Văn',N'Chu'),
+('HE153016',N'Hưng',N'Tiến',N'Vũ'),
+('HE153058',N'Thái',N'Quang',N'Đinh'),
+('HE153072',N'Tịnh',N'Danh',N'Lê'),
+('HE153199',N'Hiếu',N'Ngọc',N'Trần'),
+('HE153275',N'Đăng',N'Quý',N'Bùi'),
+('HE153321',N'San',N'Xuân Tấn',N'Nguyễn'),
+('HE153570',N'Long',N'Đức',N'Lê'),
+('HE153601',N'Vũ',N'Tuấn',N'Vi'),
+('HE153727',N'Anh',N'Ngọc',N'Phạm'),
+('HE160485',N'Dương',N'Hải',N'Phạm'),
+('HE163009',N'Trang',N'Thùy',N'Trần'),
+('HE163336',N'Minh',N'Thiên',N'Nguyễn'),
+('HS153257',N'Thành',N'Phúc',N'Vũ'),
+('SE05736',N'Hòa',N'Trung',N'Tiêu');
+
 
 INSERT INTO TimeSlots VALUES
 ('1P','7:30:00','09:50:00'),
@@ -211,11 +273,11 @@ INSERT INTO Rooms (RoomName) VALUES
 ('AL-204L');
 
 INSERT INTO Groups (GroupName, [CourseID]) VALUES 
-('IOT1702',1),
+('SE1615-NET',8),
 ('SE1723',7),
 ('ISE_1723',1),
 ('SE1723',3),
-('SE1726',5);
+('AI1703',12);
 
 INSERT INTO [Join] (StudentID, GroupID) VALUES
 ('HE171073',3),
@@ -231,15 +293,76 @@ INSERT INTO [Join] (StudentID, GroupID) VALUES
 ('HE160694',3),
 ('HE161357',3),
 ('HE161795',3),
-('HE163146',3);
+('HE163146',3),
+('HE163767',5),
+('HE170305',5),
+('HE170418',5),
+('HE170472',5),
+('HE170594',5),
+('HE170596',5),
+('HE170696',5),
+('HE170744',5),
+('HE170746',5),
+('HE170769',5),
+('HE170770',5),
+('HE170776',5),
+('HE170952',5),
+('HE171047',5),
+('HE171106',5),
+('HE171219',5),
+('HE171234',5),
+('HE171244',5),
+('HE171252',5),
+('HE171257',5),
+('HE171281',5),
+('HE171584',5),
+('HE171671',5),
+('HE171708',5),
+('HE171929',5),
+('HE172821',5),
+('HE173502',5),
+('HE176220',5),
+('HE179008',5),
+('HE140494',1),
+('HE141029',1),
+('HE150203',1),
+('HE150248',1),
+('HE150366',1),
+('HE150377',1),
+('HE150632',1),
+('HE150726',1),
+('HE150767',1),
+('HE150771',1),
+('HE150901',1),
+('HE151191',1),
+('HE151375',1),
+('HE151412',1),
+('HE151445',1),
+('HE151472',1),
+('HE153014',1),
+('HE153016',1),
+('HE153058',1),
+('HE153072',1),
+('HE153199',1),
+('HE153275',1),
+('HE153321',1),
+('HE153570',1),
+('HE153601',1),
+('HE153727',1),
+('HE160485',1),
+('HE163009',1),
+('HE163336',1),
+('HS153257',1),
+('SE05736',1);
+
 
 INSERT INTO [Sessions] (SessionName, Instructor, [Group], TimeSlot, Room, InstructorStatus, ConductDate) VALUES
-('burh 1','sonnt5',3,'1P',2,0,'2023-03-20'),
-('burh 2','sonnt5',3,'2P',2,0,'2023-03-20'),
-('Workshop 1', 'sonnt5',3,'1P',2,0,'2023-02-14'),
-('Introduction to Databases', 'bantq',1,'2P',2,0,'2023-03-16'),
-('Create a Servlet 2', 'sonnt5',3,'1P',2,0,'2023-03-21'),
-('Create a Servlet 3', 'sonnt5',3,'1',2,0,'2023-03-22');
+('Sessions & Cookies','sonnt5',3,'1P',2,0,'2023-03-20'),
+('Workshop 1','sonnt5',3,'2P',2,0,'2023-03-22'),
+('Interface in C#', 'sonnt5',1,'3P',8,0,'2023-03-21'),
+('Extending Classes', 'sonnt5',1,'4P',8,0,'2023-03-20'),
+('PyTorch Basics', 'bantq',5,'2P',3,0,'2023-03-20'),
+('PyTorch Basics 2', 'bantq',5,'1P',3,0,'2023-03-21');
 /*
 ('Introduction to Databases', 'bantq',4,'2P','DE-307',1,'2023-02-12'),
 
@@ -247,8 +370,9 @@ INSERT INTO [Sessions] (SessionName, Instructor, [Group], TimeSlot, Room, Instru
 */
 
 INSERT INTO [AssignTo] (InstructorID, GroupID) VALUES
-('sonnt5',3);
-
+('sonnt5',3),
+('sonnt5',1),
+('bantq',5);
 /*
 INSERT INTO [Attend] VALUES
 ('HE171162',1,1,'2023-02-24 13:00:25',''),

@@ -15,7 +15,7 @@
     </head>
     <body>
         <%@include file="header.jsp" %>
-        <h1 class="my-10 text-center text-3xl font-bold">Attendance Overview of Group: ${requestScope.group} - PRJ301</h1>
+        <h1 class="my-10 text-center text-3xl font-bold">Attendance Overview of Group: ${requestScope.group.getGroupName()} - ${requestScope.group.getCourse().getCourseCode()}</h1>
         
         <div class="relative my-0 mx-auto mb-12 w-5/6 overflow-x-auto text-center shadow-md sm:rounded-xl">
       <table class="w-full">

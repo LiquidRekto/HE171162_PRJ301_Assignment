@@ -49,7 +49,7 @@ public class AttendanceCheckController extends BaseRequiredAuthenticatedControll
         String sessParam = request.getParameter("sesid");
         
         if (sessParam == null) {
-            response.getWriter().println("Not available!");
+            response.sendRedirect("home");
         } else {
             int sesId = Integer.parseInt(sessParam);
             AttendDBContext ctx = new AttendDBContext(MyDBConfig.getConfig());

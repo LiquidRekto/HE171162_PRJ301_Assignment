@@ -16,12 +16,7 @@
     <h1 class="my-10 text-center text-3xl font-bold">Weekly Schedule</h1>
     <div class="w-full py-10 text-center">
       <div class="inline-block px-2">
-        <label> Instructor: </label>
-        <input class="border-box rounded-lg border border-gray-500 bg-gray-200 p-2" type="text" value="${sessionScope.user.getInstructor().getInstructorId()}" placeholder="Type here..." />
-      </div>
-      <div class="inline-block px-2">
-        <button class="border-box rounded-lg bg-blue-700 px-6 py-3 font-bold text-white hover:bg-blue-600">View</button>
-      </div>
+          <label class="text-xl"> Instructor: <span class="font-bold">${sessionScope.user.getInstructor().getInstructorId()}</span> </label>
     </div>
     <div class="text-center mx-0 my-8">
         <div class="inline-block pb-6 w-6 h-2 bg-green-500"></div>
